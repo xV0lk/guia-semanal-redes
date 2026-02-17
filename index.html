@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#2d3d2a">
+  <meta name="description" content="Guía práctica semanal para gestión de redes de BilliCactus y Olumi">
+  <title>Guía Semanal Redes — BilliCactus & Olumi</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h1>Tu Guía Semanal</h1>
+        <p class="tagline">BilliCactus · Olumi — Magia y recuerdos en cada creación</p>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-section="tareas">Tareas semanales</button>
+        <button class="nav-item" data-section="guias">Guías</button>
+        <button class="nav-item" data-section="tips-ia">Tips IA</button>
+        <button class="nav-item" data-section="diarias">Rutina diaria</button>
+        <button class="nav-item" data-section="motivacion">Motivación</button>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="progress-card">
+          <span class="progress-label">Progreso semanal</span>
+          <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+          <span class="progress-count" id="progressCount">0/0</span>
+        </div>
+        <div class="streak-display" id="streakDisplay"></div>
+        <div class="achievements-preview" id="achievementsPreview"></div>
+        <div class="week-selector">
+          <button id="prevWeek" aria-label="Semana anterior">←</button>
+          <span id="weekLabel">Semana actual</span>
+          <button id="nextWeek" aria-label="Semana siguiente">→</button>
+        </div>
+        <div class="brand-filter">
+          <label><input type="radio" name="brand" value="ambas" checked> Ambas</label>
+          <label><input type="radio" name="brand" value="olumi"> Olumi</label>
+          <label><input type="radio" name="brand" value="billicactus"> BilliCactus</label>
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">Modo oscuro</button>
+      </div>
+    </aside>
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Abrir menú">☰</button>
+    <main class="content">
+      <section class="panel active" id="panel-tareas">
+        <header class="panel-header">
+          <h2>Tu semana en orden</h2>
+          <p>Marca cada tarea al completarla. Recuerda: las guías tienen todo el detalle para que no te pierdas.</p>
+        </header>
+        <div class="tasks-container">
+          <article class="task-day" data-day="domingo">
+            <h3>Domingo — Planificación (~30 min)</h3>
+            <ul class="task-list">
+              <li><label><input type="checkbox" data-task="dom-1"> Abrir la Gema de Gemini</label></li>
+              <li><label><input type="checkbox" data-task="dom-2"> Pedir calendario para Olumi <a href="#" class="link-guide" data-guide="calendario">Ver Guía</a></label></li>
+              <li><label><input type="checkbox" data-task="dom-3"> Pedir calendario para BilliCactus <a href="#" class="link-guide" data-guide="calendario">Ver Guía</a></label></li>
+              <li><label><input type="checkbox" data-task="dom-4"> Revisar métricas semana anterior (top 3 y bottom 3)</label></li>
+              <li><label><input type="checkbox" data-task="dom-5"> Definir 1 aprendizaje de la semana anterior</label></li>
+              <li><label><input type="checkbox" data-task="dom-6"> Elegir foco: 1 colección / 1 producto / 1 emoción</label></li>
+              <li><label><input type="checkbox" data-task="dom-7"> Definir experimento de la semana (hook, portada, CTA u hora)</label></li>
+            </ul>
+          </article>
+          <article class="task-day" data-day="lunes">
+            <h3>Lunes (~20 min)</h3>
+            <ul class="task-list">
+              <li><label><input type="checkbox" data-task="lun-1"> Pedir a la Gema captions para lunes y martes <a href="#" class="link-guide" data-guide="captions">Ver Guía Captions</a></label></li>
+              <li><label><input type="checkbox" data-task="lun-2"> Copiar, ajustar con tu toque personal</label></li>
+              <li><label><input type="checkbox" data-task="lun-3"> Programar posts en Meta Business Suite / Hookle</label></li>
+            </ul>
+          </article>
+          <article class="task-day" data-day="martes">
+            <h3>Martes</h3>
+            <ul class="task-list">
+              <li><label><input type="checkbox" data-task="mar-1"> Publicar según calendario</label></li>
+              <li><label><input type="checkbox" data-task="mar-2"> Completar rutina diaria de engagement</label></li>
+            </ul>
+          </article>
+          <article class="task-day" data-day="miercoles">
+            <h3>Miércoles (~20 min)</h3>
+            <ul class="task-list">
+              <li><label><input type="checkbox" data-task="mie-1"> Pedir ideas de historias interactivas <a href="#" class="link-guide" data-guide="historias">Ver Guía Historias</a></label></li>
+              <li><label><input type="checkbox" data-task="mie-2"> Pedir captions para jueves y viernes</label></li>
+              <li><label><input type="checkbox" data-task="mie-3"> Preparar assets visuales en Canva</label></li>
+            </ul>
+          </article>
+          <article class="task-day" data-day="jueves">
+            <h3>Jueves</h3>
+            <ul class="task-list">
+              <li><label><input type="checkbox" data-task="jue-1"> Publicar según calendario</label></li>
+              <li><label><input type="checkbox" data-task="jue-2"> Rutina diaria de engagement</label></li>
+            </ul>
+          </article>
+          <article class="task-day" data-day="viernes">
+            <h3>Viernes (~15 min)</h3>
+            <ul class="task-list">
+              <li><label><input type="checkbox" data-task="vie-1"> Pedir sugerencia de Reel para fin de semana <a href="#" class="link-guide" data-guide="reels">Ver Guía Reels</a></label></li>
+              <li><label><input type="checkbox" data-task="vie-2"> Pedir captions del fin de semana</label></li>
+              <li><label><input type="checkbox" data-task="vie-3"> Editar Reel en CapCut</label></li>
+              <li><label><input type="checkbox" data-task="vie-4"> Programar publicaciones del fin de semana</label></li>
+            </ul>
+          </article>
+          <article class="task-day" data-day="sabado">
+            <h3>Sábado</h3>
+            <ul class="task-list">
+              <li><label><input type="checkbox" data-task="sab-1"> Publicar según calendario</label></li>
+              <li><label><input type="checkbox" data-task="sab-2"> Rutina diaria de engagement</label></li>
+            </ul>
+          </article>
+          <article class="task-day" data-day="cierre">
+            <h3>Cierre de semana (domingo)</h3>
+            <ul class="task-list">
+              <li><label><input type="checkbox" data-task="cie-1"> Registrar métricas en el Sheet <a href="#" class="link-guide" data-guide="metricas">Ver Guía Métricas</a></label></li>
+              <li><label><input type="checkbox" data-task="cie-2"> Etiquetar experimento y resultado (A o B)</label></li>
+              <li><label><input type="checkbox" data-task="cie-3"> Pedir a la Gema análisis y sugerencias para próxima semana</label></li>
+            </ul>
+          </article>
+          <article class="task-day task-day--marca" data-day="olumi">
+            <h3>Tareas Olumi</h3>
+            <ul class="task-list">
+              <li><label><input type="checkbox" data-task="olu-1"> Escribir en lote: 2 guiones reels + 2 carruseles + 3 stories</label></li>
+              <li><label><input type="checkbox" data-task="olu-2"> Crear 2 carruseles y 2 portadas de reel en Canva</label></li>
+            </ul>
+          </article>
+          <article class="task-day task-day--marca" data-day="billicactus">
+            <h3>Tareas BilliCactus</h3>
+            <ul class="task-list">
+              <li><label><input type="checkbox" data-task="bil-1"> Revisar DMs y responder pedidos según flujo de compra</label></li>
+              <li><label><input type="checkbox" data-task="bil-2"> Solicitar permiso de publicación a clientes con testimonios</label></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+      <section class="panel" id="panel-guias">
+        <header class="panel-header">
+          <h2>Guías de referencia</h2>
+          <p>Todo el paso a paso para captions, Reels, historias y más. Aquí está el detalle cuando lo necesites.</p>
+        </header>
+        <div class="guides-container">
+          <details class="guide" open>
+            <summary>Guía Captions</summary>
+            <div class="guide-content">
+              <h4>Estructura</h4>
+              <p><strong>Hook</strong> (primera línea que atrape) → <strong>Cuerpo</strong> (historia/valor) → <strong>CTA</strong> → <strong>Hashtags</strong> (15-20, separados por puntos)</p>
+              <h4>Por marca</h4>
+              <ul>
+                <li><strong>BilliCactus:</strong> Emotivo, historia del pedido, cercano.</li>
+                <li><strong>Olumi:</strong> Vibrante, conexión con naturaleza, fluido.</li>
+              </ul>
+              <h4>Longitud ideal</h4>
+              <p>150-300 caracteres para mejor engagement.</p>
+              <h4>Hashtags en 3 grupos</h4>
+              <p>Amplios (3-5) · Nicho (5-8) · Branded (2-3)</p>
+              <h4>Prompts para la Gema</h4>
+              <pre>Escribe un caption para un post de [marca] mostrando [producto/escena]. Tono [emotivo/vibrante]. Incluye CTA y hashtags.</pre>
+              <pre>Dame 3 versiones: una más emotiva, una más directa, una más divertida.</pre>
+            </div>
+          </details>
+          <details class="guide">
+            <summary>Guía Reels</summary>
+            <div class="guide-content">
+              <h4>Estructura segundo a segundo</h4>
+              <p><strong>Hook</strong> (0-3s) → <strong>Desarrollo</strong> (3-15s) → <strong>Climax</strong> (15-25s) → <strong>CTA</strong> (25-30s)</p>
+              <h4>Ideas BilliCactus</h4>
+              <ul>
+                <li>De foto a arte (transición antes/después)</li>
+                <li>Time-lapse de creación</li>
+                <li>Reacción del cliente</li>
+                <li>POV: estás por recibir un regalo</li>
+              </ul>
+              <h4>Ideas Olumi</h4>
+              <ul>
+                <li>Producto en contexto lifestyle</li>
+                <li>3 formas de usar [producto]</li>
+                <li>Unboxing aesthetic</li>
+                <li>Color reveal (B&N → colores vibrantes)</li>
+                <li>Naturaleza → diseño → producto</li>
+                <li>"Qué llevaría a la playa/yoga/parque"</li>
+              </ul>
+              <h4>Checklist</h4>
+              <p>Texto en pantalla legible · Audio trending o voz propia · Portada coherente</p>
+              <h4>Prompt para la Gema</h4>
+              <pre>Dame 3 ideas de Reels para [marca] mostrando [tema]. Incluye estructura segundo a segundo, hook, beats y CTA.</pre>
+            </div>
+          </details>
+          <details class="guide">
+            <summary>Guía Calendario / Planificación</summary>
+            <div class="guide-content">
+              <h4>Cómo pedir a la Gema</h4>
+              <p>"Genera un calendario de contenido para esta semana para [marca]"</p>
+              <p>Formato tabla: <strong>Día | Formato | Pilar | Tema | Hook | CTA</strong></p>
+              <h4>Mix recomendado</h4>
+              <p>80% contenido de valor · 20% venta</p>
+              <h4>Output base Olumi</h4>
+              <p>2 Reels + 2 Carruseles + 3 secuencias Stories + 1 experimento</p>
+              <h4>Output base BilliCactus</h4>
+              <p>4-5 posts · 2-3 Reels · Historias diarias</p>
+              <h4>Horarios sugeridos (Colombia)</h4>
+              <p>7:30-9:00 · 12:30-14:00 · 19:00-21:00</p>
+            </div>
+          </details>
+          <details class="guide">
+            <summary>Guía Historias</summary>
+            <div class="guide-content">
+              <h4>Secuencia tipo</h4>
+              <p>3-5 historias con hilo narrativo · Stickers: encuestas, preguntas, quiz, cuenta regresiva</p>
+              <h4>BilliCactus — Secuencia diaria</h4>
+              <p>Buenos días → Proceso → Interactiva → Producto → Cierre</p>
+              <h4>Olumi — Estructura</h4>
+              <p>Hook → Desarrollo → Interacción → Demostración → Cierre + CTA</p>
+              <h4>Mix</h4>
+              <p>Espontáneo + estratégico. Nunca usar IA para historias del día a día.</p>
+              <h4>Prompt para la Gema</h4>
+              <pre>Dame ideas de historias interactivas para hoy para [marca]. Incluye stickers y preguntas.</pre>
+            </div>
+          </details>
+          <details class="guide">
+            <summary>Guía Carruseles</summary>
+            <div class="guide-content">
+              <h4>Estructura</h4>
+              <p>Slide 1 (título) → Slides 2-8 (contenido) → Slide final (CTA) · 7-9 slides en total</p>
+              <h4>Ideas BilliCactus</h4>
+              <p>Catálogo completo · Proceso paso a paso · Clientes felices · Guía de regalos para [fecha]</p>
+              <h4>Ideas Olumi</h4>
+              <p>Por pilar: naturaleza/diseño, bienestar, producto en uso, educación, valores</p>
+              <h4>Incluir</h4>
+              <p>Caption corto y largo · Hashtags al final</p>
+            </div>
+          </details>
+          <details class="guide">
+            <summary>Guía Prompts para la Gema</summary>
+            <div class="guide-content">
+              <h4>Estructura del buen prompt</h4>
+              <p><strong>Rol</strong> + <strong>Tarea</strong> + <strong>Contexto</strong> + <strong>Formato</strong> + <strong>Restricciones</strong></p>
+              <h4>Ejemplos por tipo</h4>
+              <ul>
+                <li>Ideas: "Necesito ideas de contenido para [marca] para la próxima semana. [contexto]"</li>
+                <li>Captions: "Escribe caption para [marca], [producto], tono [X], incluye CTA y hashtags"</li>
+                <li>Métricas: Pega tus métricas y pide "Analiza y sugiere qué ajustar"</li>
+              </ul>
+              <h4>Errores a evitar</h4>
+              <p>Prompts vagos · No especificar marca · Publicar sin editar lo que genera la IA</p>
+            </div>
+          </details>
+          <details class="guide">
+            <summary>Guía Métricas</summary>
+            <div class="guide-content">
+              <h4>Qué registrar</h4>
+              <p>Alcance · Guardados · Compartidos · Comentarios · DMs · Clics en link</p>
+              <h4>Métricas que importan</h4>
+              <p>Guardados &gt; 3% alcance · Compartidos &gt; 2% · Comentarios &gt; 10/post · Clics link</p>
+              <h4>Vanidad (menos importantes)</h4>
+              <p>Likes · Seguidores totales</p>
+              <h4>Prompt para análisis</h4>
+              <pre>Estos son los resultados de mis últimas publicaciones: [pegar métricas]. Analiza qué funcionó mejor, patrones y 3 recomendaciones para la próxima semana.</pre>
+            </div>
+          </details>
+        </div>
+      </section>
+      <section class="panel" id="panel-tips-ia">
+        <header class="panel-header">
+          <h2>Tips para usar la IA</h2>
+          <p>Mejores prácticas para que la Gema de Gemini trabaje a tu favor sin perder tu voz.</p>
+        </header>
+        <div class="tips-content">
+          <ul class="tips-list">
+            <li><strong>Estructura del prompt:</strong> Rol + Tarea + Contexto + Formato + Restricciones</li>
+            <li><strong>IA asiste, no reemplaza:</strong> Siempre revisar y agregar tu toque personal</li>
+            <li><strong>Regla 80/20:</strong> 80% asistido por IA, 20% humano (historias espontáneas, respuestas)</li>
+            <li><strong>Sé específica:</strong> "Caption para BilliCactus, cojín con golden retriever, emotivo" &gt; "Escribe un post"</li>
+            <li><strong>Pide variaciones:</strong> "Dame 3 versiones: emotiva, directa, divertida"</li>
+            <li><strong>Evita:</strong> Publicar sin editar, prompts vagos, ignorar voz de marca</li>
+            <li><strong>Métricas que importan:</strong> Guardados, compartidos, comentarios, clics, DMs (más que likes)</li>
+          </ul>
+          <h4>Prompts listos para copiar</h4>
+          <pre>Necesito ideas de contenido para [marca] para la próxima semana. [contexto: fecha especial/tema]</pre>
+          <pre>Escribe un caption para un post de [marca] mostrando [producto/escena]. Tono [emotivo/vibrante]. Incluye CTA y hashtags.</pre>
+          <pre>Dame 3 ideas de Reels para [marca] mostrando [tema]. Incluye estructura segundo a segundo.</pre>
+        </div>
+      </section>
+      <section class="panel" id="panel-diarias">
+        <header class="panel-header">
+          <h2>Rutina diaria</h2>
+          <p>Unos 15 minutos al día. Marca cada paso y mantén tu racha.</p>
+        </header>
+        <div class="daily-tasks">
+          <article class="daily-block">
+            <h3>Rutina diaria</h3>
+            <ul class="task-list">
+              <li><label><input type="checkbox" data-task="daily-1"> 10 min: Responder DMs y comentarios</label></li>
+              <li><label><input type="checkbox" data-task="daily-2"> 5 min: Recolectar frases del público (para futuros hooks)</label></li>
+            </ul>
+          </article>
+          <article class="daily-block">
+            <h3>Engagement orgánico (Olumi)</h3>
+            <ul class="task-list">
+              <li><label><input type="checkbox" data-task="eng-1"> Comentar en 15-20 posts de cuentas del nicho</label></li>
+              <li><label><input type="checkbox" data-task="eng-2"> Seguir 20-30 cuentas relevantes</label></li>
+            </ul>
+          </article>
+          <div class="gamification-display">
+            <div class="streak-box">
+              <span class="streak-number" id="dailyStreak">0</span>
+              <span class="streak-text">días seguidos con rutina</span>
+            </div>
+            <div class="achievements-list" id="achievementsList"></div>
+          </div>
+        </div>
+      </section>
+      <section class="panel" id="panel-motivacion">
+        <header class="panel-header">
+          <h2>Para no rendirte</h2>
+          <p>La constancia es lo que marca la diferencia. Estos recordatorios te ayudan a seguir.</p>
+        </header>
+        <div class="motivacion-content">
+          <ul class="tips-list motivacion-list">
+            <li><strong>Consistencia &gt; perfección:</strong> Mejor 3 posts buenos que 7 mediocres. El algoritmo premia la regularidad.</li>
+            <li><strong>Bloquea tiempo:</strong> Reserva bloques fijos (ej. domingo 9:00 planificación, 15 min diarios engagement).</li>
+            <li><strong>Celebra pequeños logros:</strong> Cada post, caption, DM respondido cuenta.</li>
+            <li><strong>No te compares:</strong> Olumi está en etapa semilla; BilliCactus tiene base. Cada marca tiene su ritmo.</li>
+            <li><strong>Recuerda el "por qué":</strong> "Transformamos recuerdos en arte" / "Magia en cada creación".</li>
+            <li><strong>Si te saltas un día:</strong> No pasa nada. Retoma al día siguiente sin culpa.</li>
+            <li><strong>Pregunta a la Gema:</strong> "Estoy agotada esta semana. Dame un plan mínimo de 3 publicaciones."</li>
+            <li><strong>Contenido en lote:</strong> Planifica domingo, crea miércoles, programa viernes. Menos decisión diaria.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
