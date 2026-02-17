@@ -16,21 +16,19 @@
     d.setDate(d.getDate() + 4 - (d.getDay() || 7));
     const yearStart = new Date(d.getFullYear(), 0, 1);
     const weekNum = Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
-    return `${d.getFullYear()}-W${String(weekNum).padStart(2, '0')}`;
+    return d.getFullYear() + '-W' + String(weekNum).padStart(2, '0');
   }
 
   function getWeekLabel(weekKey) {
-    const [y, w] = weekKey.replace('W', '').split('-');
-    return `Semana ${w} de ${y}`;
+    const parts = weekKey.replace('W', '').split('-');
+    return 'Semana ' + parts[1] + ' de ' + parts[0];
   }
 
   function loadWeekData(weekKey) {
     try {
       const raw = localStorage.getItem(STORAGE_KEY_PREFIX + weekKey);
       return raw ? JSON.parse(raw) : {};
-    } catch {
-      return {};
-    }
+    } catch { return {}; }
   }
 
   function saveWeekData(weekKey, data) {
@@ -38,11 +36,8 @@
   }
 
   function getStreak() {
-    try {
-      return parseInt(localStorage.getItem(STREAK_KEY) || '0', 10);
-    } catch {
-      return 0;
-    }
+    try { return parseInt(localStorage.getItem(STREAK_KEY) || '0', 10); }
+    catch { return 0; }
   }
 
   function setStreak(n) {
@@ -58,11 +53,8 @@
   }
 
   function getAchievements() {
-    try {
-      return JSON.parse(localStorage.getItem(ACHIEVEMENTS_KEY) || '{}');
-    } catch {
-      return {};
-    }
+    try { return JSON.parse(localStorage.getItem(ACHIEVEMENTS_KEY) || '{}'); }
+    catch { return {}; }
   }
 
   function setAchievement(id, unlocked) {
@@ -78,6 +70,7 @@
   // === DOM refs ===
   const sidebar = document.getElementById('sidebar');
   const sidebarToggle = document.getElementById('sidebarToggle');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
   const navItems = document.querySelectorAll('.nav-item');
   const panels = document.querySelectorAll('.panel');
   const prevWeekBtn = document.getElementById('prevWeek');
@@ -92,6 +85,41 @@
   const themeToggle = document.getElementById('themeToggle');
   const checkboxes = document.querySelectorAll('input[data-task]');
 
+  // Guide cards DOM
+  const guidesGrid = document.getElementById('guidesGrid');
+  const guideDetail = document.getElementById('guideDetail');
+  const guideBack = document.getElementById('guideBack');
+  const guideDetailContent = document.getElementById('guideDetailContent');
+  const guideContents = document.getElementById('guideContents');
+
+  // === Sidebar toggle (mobile) ===
+  function openSidebar() {
+    sidebar?.classList.add('open');
+    sidebarOverlay?.classList.add('active');
+  }
+  function closeSidebar() {
+    sidebar?.classList.remove('open');
+    sidebarOverlay?.classList.remove('active');
+  }
+
+  sidebarToggle?.addEventListener('click', () => {
+    if (sidebar?.classList.contains('open')) {
+      closeSidebar();
+    } else {
+      openSidebar();
+    }
+  });
+  sidebarOverlay?.addEventListener('click', closeSidebar);
+
+  document.addEventListener('click', (e) => {
+    if (window.innerWidth <= 768 &&
+        sidebar?.classList.contains('open') &&
+        !sidebar.contains(e.target) &&
+        !sidebarToggle?.contains(e.target)) {
+      closeSidebar();
+    }
+  });
+
   // === Navigation ===
   navItems.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -99,58 +127,38 @@
       navItems.forEach((b) => b.classList.remove('active'));
       panels.forEach((p) => p.classList.remove('active'));
       btn.classList.add('active');
-      document.getElementById('panel-' + section).classList.add('active');
-      if (sidebar && window.innerWidth <= 768) sidebar.classList.remove('open');
+      document.getElementById('panel-' + section)?.classList.add('active');
+      if (window.innerWidth <= 768) closeSidebar();
+
+      // Reset guide detail when navigating to guides
+      if (section === 'guias') {
+        showGuidesGrid();
+      }
     });
-  });
-
-  sidebarToggle?.addEventListener('click', () => {
-    sidebar?.classList.toggle('open');
-  });
-
-  document.addEventListener('click', (e) => {
-    if (window.innerWidth <= 768 && sidebar?.classList.contains('open') && !sidebar.contains(e.target) && !sidebarToggle?.contains(e.target)) {
-      sidebar.classList.remove('open');
-    }
   });
 
   // === Week selector ===
   function renderWeek() {
-    weekLabel.textContent = getWeekLabel(currentWeekKey);
+    if (weekLabel) weekLabel.textContent = getWeekLabel(currentWeekKey);
     const data = loadWeekData(currentWeekKey);
     checkboxes.forEach((cb) => {
-      const taskId = cb.dataset.task;
-      cb.checked = !!data[taskId];
+      cb.checked = !!data[cb.dataset.task];
     });
     updateProgress();
   }
 
-  function goPrevWeek() {
-    const [y, w] = currentWeekKey.replace('W', '').split('-');
-    let ny = parseInt(y, 10);
-    let nw = parseInt(w, 10) - 1;
-    if (nw < 1) {
-      nw = 52;
-      ny--;
-    }
-    currentWeekKey = `${ny}-W${String(nw).padStart(2, '0')}`;
+  function shiftWeek(delta) {
+    const parts = currentWeekKey.replace('W', '').split('-');
+    let y = parseInt(parts[0], 10);
+    let w = parseInt(parts[1], 10) + delta;
+    if (w < 1) { w = 52; y--; }
+    if (w > 52) { w = 1; y++; }
+    currentWeekKey = y + '-W' + String(w).padStart(2, '0');
     renderWeek();
   }
 
-  function goNextWeek() {
-    const [y, w] = currentWeekKey.replace('W', '').split('-');
-    let ny = parseInt(y, 10);
-    let nw = parseInt(w, 10) + 1;
-    if (nw > 52) {
-      nw = 1;
-      ny++;
-    }
-    currentWeekKey = `${ny}-W${String(nw).padStart(2, '0')}`;
-    renderWeek();
-  }
-
-  prevWeekBtn?.addEventListener('click', goPrevWeek);
-  nextWeekBtn?.addEventListener('click', goNextWeek);
+  prevWeekBtn?.addEventListener('click', () => shiftWeek(-1));
+  nextWeekBtn?.addEventListener('click', () => shiftWeek(1));
 
   // === Checkbox persistence ===
   function saveCheckbox(taskId, checked) {
@@ -178,7 +186,7 @@
     if (progressCount) progressCount.textContent = completed + '/' + total;
   }
 
-  // === Streak (rutina diaria) ===
+  // === Streak ===
   const DAILY_TASK_IDS = ['daily-1', 'daily-2', 'eng-1', 'eng-2'];
 
   function updateStreak(taskId, checked) {
@@ -253,23 +261,117 @@
     }
   }
 
-  // === Link to guides ===
+  // === Guide Cards System ===
+  const GUIDE_NAME_MAP = {
+    'captions': 0,
+    'reels': 1,
+    'calendario': 2,
+    'historias': 3,
+    'carruseles': 4,
+    'prompts': 5,
+    'metricas': 6,
+  };
+
+  function showGuidesGrid() {
+    if (guidesGrid) guidesGrid.hidden = false;
+    if (guideDetail) guideDetail.hidden = true;
+  }
+
+  function showGuideDetail(idx) {
+    if (!guideContents) return;
+    const source = guideContents.querySelector('[data-guide-content="' + idx + '"]');
+    if (!source || !guideDetailContent) return;
+
+    guideDetailContent.innerHTML = '';
+    const clone = source.cloneNode(true);
+
+    // Inject h3 outside guide-content wrapper for styling
+    const h3 = clone.querySelector('h3');
+    if (h3) {
+      guideDetailContent.appendChild(h3.cloneNode(true));
+      h3.remove();
+    }
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'guide-content';
+    wrapper.innerHTML = clone.innerHTML;
+    guideDetailContent.appendChild(wrapper);
+
+    if (guidesGrid) guidesGrid.hidden = true;
+    if (guideDetail) guideDetail.hidden = false;
+
+    // Re-bind copy buttons in the detail view
+    bindCopyButtons(guideDetailContent);
+  }
+
+  // Card click
+  if (guidesGrid) {
+    guidesGrid.addEventListener('click', (e) => {
+      const card = e.target.closest('.guide-card');
+      if (!card) return;
+      const idx = parseInt(card.dataset.guideIdx, 10);
+      showGuideDetail(idx);
+    });
+  }
+
+  // Back button
+  guideBack?.addEventListener('click', showGuidesGrid);
+
+  // === Link to guides (from tasks) ===
   document.querySelectorAll('.link-guide').forEach((a) => {
     a.addEventListener('click', (e) => {
       e.preventDefault();
       navItems.forEach((b) => b.classList.remove('active'));
       panels.forEach((p) => p.classList.remove('active'));
       document.querySelector('.nav-item[data-section="guias"]')?.classList.add('active');
-      document.getElementById('panel-guias').classList.add('active');
+      document.getElementById('panel-guias')?.classList.add('active');
+
       const guideId = (a.dataset.guide || '').toLowerCase();
-      if (guideId) {
-        document.querySelectorAll('.guide').forEach((g) => {
-          g.open = g.querySelector('summary').textContent.toLowerCase().includes(guideId);
-        });
+      if (guideId && GUIDE_NAME_MAP[guideId] !== undefined) {
+        showGuideDetail(GUIDE_NAME_MAP[guideId]);
+      } else {
+        showGuidesGrid();
       }
-      if (sidebar && window.innerWidth <= 768) sidebar.classList.remove('open');
+      if (window.innerWidth <= 768) closeSidebar();
     });
   });
+
+  // === Copy to clipboard ===
+  function copyToClipboard(text, el) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        el.classList.add('copied');
+        setTimeout(() => el.classList.remove('copied'), 2000);
+      });
+    } else {
+      // Fallback
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      el.classList.add('copied');
+      setTimeout(() => el.classList.remove('copied'), 2000);
+    }
+  }
+
+  function bindCopyButtons(container) {
+    const root = container || document;
+    root.querySelectorAll('[data-copyable]').forEach((el) => {
+      if (el._copyBound) return;
+      el._copyBound = true;
+      el.addEventListener('click', () => {
+        const text = el.textContent.replace(/^Prompt copiable\s*/, '').replace(/Copiar$/, '').trim();
+        copyToClipboard(text, el);
+      });
+    });
+  }
+
+  // Bind copy on bento prompts and any initial prompt-cards
+  bindCopyButtons(document);
 
   // === Theme ===
   function initTheme() {
@@ -288,7 +390,7 @@
     themeToggle.textContent = isDark ? 'Modo oscuro' : 'Modo claro';
   });
 
-  // === Brand filter (show/hide marca tasks) ===
+  // === Brand filter ===
   document.querySelectorAll('input[name="brand"]').forEach((radio) => {
     radio.addEventListener('change', () => {
       const v = radio.value;

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1f2e1c"/>
+      <stop offset="100%" stop-color="#2a3b26"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6b8f68"/>
+      <stop offset="100%" stop-color="#5a8a5a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4a24e"/>
+      <stop offset="100%" stop-color="#c4654a"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+  <!-- Stylized leaf -->
+  <path d="M64 22 C82 38, 98 58, 92 82 C88 96, 74 104, 64 106 C54 104, 40 96, 36 82 C30 58, 46 38, 64 22z" fill="url(#leaf)" opacity="0.35"/>
+  <path d="M64 32 C78 44, 88 60, 84 78 C81 88, 72 94, 64 96 C56 94, 47 88, 44 78 C40 60, 50 44, 64 32z" fill="url(#leaf)" opacity="0.25"/>
+  <!-- Leaf vein -->
+  <path d="M64 40 L64 88" stroke="#6b8f68" stroke-width="2" opacity="0.3" stroke-linecap="round"/>
+  <!-- Checkmark -->
+  <path d="M48 64 L60 76 L82 50" stroke="url(#accent)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
