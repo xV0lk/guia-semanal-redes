@@ -405,6 +405,78 @@
     });
   });
 
+  // === Gema brand tabs ===
+  const gemaTabs = document.querySelectorAll('.gema-tab');
+  const gemaContents = document.querySelectorAll('.gema-brand-content');
+
+  gemaTabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const brand = tab.dataset.gemaBrand;
+      gemaTabs.forEach((t) => t.classList.remove('active'));
+      gemaContents.forEach((c) => c.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('gema-' + brand)?.classList.add('active');
+    });
+  });
+
+  // === Gema copy-all button ===
+  document.querySelectorAll('.gema-copy-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const brand = btn.dataset.copyBrand;
+      const container = document.getElementById('gema-' + brand);
+      if (!container) return;
+      const sections = container.querySelectorAll('.gema-section');
+      let text = '';
+      sections.forEach((sec) => {
+        const summary = sec.querySelector('summary');
+        if (summary) {
+          const title = summary.textContent.replace(/Propuesta|Completa|Revisa/g, '').trim();
+          text += '## ' + title + '\n\n';
+        }
+        const fields = sec.querySelectorAll('.gema-field');
+        fields.forEach((field) => {
+          const label = field.querySelector('label');
+          const prefill = field.querySelector('.gema-prefill, .gema-prefill--block');
+          const list = field.querySelector('.gema-prefill-list');
+          const table = field.querySelector('.gema-table');
+          const placeholder = field.querySelector('.gema-placeholder');
+          if (label) text += '### ' + label.textContent.replace(/Propuesta|Completa|Revisa/g, '').trim() + '\n';
+          if (prefill) {
+            text += prefill.innerText.trim() + '\n\n';
+          } else if (list) {
+            const items = list.querySelectorAll('li');
+            items.forEach((li) => { text += '- ' + li.innerText.trim() + '\n'; });
+            text += '\n';
+          } else if (table) {
+            const rows = table.querySelectorAll('tr');
+            rows.forEach((row, i) => {
+              const cells = row.querySelectorAll('th, td');
+              const vals = [];
+              cells.forEach((c) => vals.push(c.innerText.trim()));
+              text += '| ' + vals.join(' | ') + ' |\n';
+              if (i === 0) {
+                text += '|' + vals.map(() => '---').join('|') + '|\n';
+              }
+            });
+            text += '\n';
+          } else if (placeholder) {
+            text += '[POR COMPLETAR]: ' + placeholder.innerText.trim() + '\n\n';
+          }
+        });
+      });
+      navigator.clipboard.writeText(text.trim()).then(() => {
+        btn.classList.add('copied');
+        btn.textContent = 'Copiado!';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.textContent = brand === 'billicactus'
+            ? 'Copiar todo para la Gema de BilliCactus'
+            : 'Copiar todo para la Gema de Olumi';
+        }, 2500);
+      });
+    });
+  });
+
   // === Service Worker (PWA) ===
   if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('sw.js').catch(() => {});
