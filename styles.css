@@ -332,6 +332,22 @@ body {
   margin: 0.5rem 0;
   border: 1px solid var(--border);
 }
+.guide-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75rem 0;
+  font-size: 0.9rem;
+}
+.guide-content th, .guide-content td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.guide-content th { font-weight: 600; }
+.guide-content tr:first-child th { background: rgba(0,0,0,0.04); }
+[data-theme="dark"] .guide-content tr:first-child th { background: rgba(255,255,255,0.05); }
+.guide-content ol { padding-left: 1.25rem; margin: 0.5rem 0; }
+.guide-content ol li { margin: 0.3rem 0; }
 
 /* ===== Tips ===== */
 .tips-content, .motivacion-content { max-width: 700px; }
