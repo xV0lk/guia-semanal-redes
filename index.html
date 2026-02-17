@@ -35,6 +35,10 @@
           <span class="nav-icon">📚</span>
           <span class="nav-label">Guías</span>
         </button>
+        <button class="nav-item" data-section="documentos">
+          <span class="nav-icon">📄</span>
+          <span class="nav-label">Documentos</span>
+        </button>
         <button class="nav-item" data-section="tips-ia">
           <span class="nav-icon">🤖</span>
           <span class="nav-label">Tips IA</span>
@@ -430,13 +434,6 @@ Contexto de la semana: [producto/campaña/fecha].</pre>
           </button>
         </div>
 
-        <section class="docs-ref-section" aria-labelledby="docsRefHeading">
-          <h3 id="docsRefHeading" class="docs-ref-heading">Documentos de referencia</h3>
-          <p class="docs-ref-desc">Estrategias, guías y ejemplos en Markdown. Elige un documento para leerlo.</p>
-          <div class="guides-grid" id="docsRefGrid" role="list"></div>
-          <p id="docsRefError" class="docs-ref-error" hidden>No se pudo cargar el índice de documentos.</p>
-        </section>
-
         <div class="guide-detail" id="guideDetail" hidden>
           <button class="guide-detail__back" id="guideBack">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -699,6 +696,23 @@ Analiza:
 3. 3 recomendaciones concretas para la próxima semana</div>
           </div>
 
+        </div>
+      </section>
+
+      <!-- ========== DOCUMENTOS DE REFERENCIA ========== -->
+      <section class="panel" id="panel-documentos">
+        <header class="panel-header">
+          <h2>Documentos de referencia</h2>
+          <p>Estrategias, guías unificadas y ejemplos en Markdown. Elige un documento para leerlo.</p>
+        </header>
+        <div class="guides-grid" id="docsRefGrid" role="list"></div>
+        <p id="docsRefError" class="docs-ref-error" hidden>No se pudo cargar el índice de documentos.</p>
+        <div class="guide-detail" id="docDetail" hidden>
+          <button class="guide-detail__back" id="docBack">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Volver a documentos
+          </button>
+          <div class="guide-detail__content" id="docDetailContent"></div>
         </div>
       </section>
 

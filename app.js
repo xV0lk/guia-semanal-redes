@@ -93,6 +93,9 @@
   const guideContents = document.getElementById('guideContents');
   const docsRefGrid = document.getElementById('docsRefGrid');
   const docsRefError = document.getElementById('docsRefError');
+  const docDetail = document.getElementById('docDetail');
+  const docBack = document.getElementById('docBack');
+  const docDetailContent = document.getElementById('docDetailContent');
 
   // === Sidebar toggle (mobile) ===
   function openSidebar() {
@@ -132,9 +135,10 @@
       document.getElementById('panel-' + section)?.classList.add('active');
       if (window.innerWidth <= 768) closeSidebar();
 
-      // Reset guide detail and load docs index when navigating to guides
-      if (section === 'guias') {
-        showGuidesGrid();
+      // Reset guide detail when navigating to guides; load docs index when navigating to documents
+      if (section === 'guias') showGuidesGrid();
+      if (section === 'documentos') {
+        showDocsGrid();
         loadDocsIndex();
       }
     });
@@ -277,7 +281,6 @@
 
   function showGuidesGrid() {
     if (guidesGrid) guidesGrid.hidden = false;
-    if (docsRefGrid) docsRefGrid.hidden = false;
     if (guideDetail) guideDetail.hidden = true;
   }
 
@@ -302,7 +305,6 @@
     guideDetailContent.appendChild(wrapper);
 
     if (guidesGrid) guidesGrid.hidden = true;
-    if (docsRefGrid) docsRefGrid.hidden = true;
     if (guideDetail) guideDetail.hidden = false;
 
     // Re-bind copy buttons in the detail view
@@ -369,23 +371,27 @@
       });
   }
 
+  function showDocsGrid() {
+    if (docsRefGrid) docsRefGrid.hidden = false;
+    if (docDetail) docDetail.hidden = true;
+  }
+
   function showDocViewer(file, title) {
-    if (!guideDetailContent || !guideDetail) return;
-    guideDetailContent.innerHTML = '<p class="guide-content">Cargando…</p>';
-    if (guidesGrid) guidesGrid.hidden = true;
+    if (!docDetailContent || !docDetail) return;
+    docDetailContent.innerHTML = '<p class="guide-content">Cargando…</p>';
     if (docsRefGrid) docsRefGrid.hidden = true;
-    guideDetail.hidden = false;
+    docDetail.hidden = false;
 
     fetch('guias/' + file)
       .then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); })
       .then((md) => {
         const html = typeof marked !== 'undefined' && marked.parse ? marked.parse(md) : md.replace(/</g, '&lt;').replace(/>/g, '&gt;');
-        guideDetailContent.innerHTML = '<h3>' + escapeHtml(title) + '</h3><div class="guide-content markdown-body">' + html + '</div>';
-        bindCopyButtons(guideDetailContent);
+        docDetailContent.innerHTML = '<h3>' + escapeHtml(title) + '</h3><div class="guide-content markdown-body">' + html + '</div>';
+        bindCopyButtons(docDetailContent);
       })
       .catch(() => {
-        guideDetailContent.innerHTML = '<h3>' + escapeHtml(title) + '</h3><div class="guide-content"><p class="docs-ref-error">No se pudo cargar el documento.</p><button type="button" class="guide-detail__back" id="docBackBtn">Volver a guías</button></div>';
-        document.getElementById('docBackBtn')?.addEventListener('click', showGuidesGrid);
+        docDetailContent.innerHTML = '<h3>' + escapeHtml(title) + '</h3><div class="guide-content"><p class="docs-ref-error">No se pudo cargar el documento.</p><button type="button" class="guide-detail__back" id="docBackBtn">Volver a documentos</button></div>';
+        document.getElementById('docBackBtn')?.addEventListener('click', showDocsGrid);
       });
   }
 
@@ -397,7 +403,8 @@
     });
   }
 
-  if (document.getElementById('panel-guias')?.classList.contains('active')) loadDocsIndex();
+  docBack?.addEventListener('click', showDocsGrid);
+  if (document.getElementById('panel-documentos')?.classList.contains('active')) loadDocsIndex();
 
   // === Link to guides (from tasks) ===
   document.querySelectorAll('.link-guide').forEach((a) => {

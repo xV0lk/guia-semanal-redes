@@ -916,25 +916,7 @@ body {
   z-index: 1;
 }
 
-/* Documentos de referencia (panel Guías) */
-.docs-ref-section {
-  margin-top: 2.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
-}
-.docs-ref-heading {
-  margin: 0 0 0.35rem;
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--text);
-}
-.docs-ref-desc {
-  margin: 0 0 1rem;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-}
-#docsRefGrid.guides-grid { margin-top: 0.5rem; }
+/* Documentos de referencia (panel Documentos) */
 .docs-ref-error {
   color: var(--accent-error, #c4654a);
   font-size: 0.9rem;
