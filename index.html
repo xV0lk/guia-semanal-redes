@@ -3,28 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#2d3d2a">
+  <meta name="theme-color" content="#1f2e1c">
   <meta name="description" content="Guía práctica semanal para gestión de redes de BilliCactus y Olumi">
   <title>Guía Semanal Redes — BilliCactus & Olumi</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="grain-overlay" aria-hidden="true"></div>
   <div class="app">
     <aside class="sidebar" id="sidebar">
       <div class="sidebar-header">
         <h1>Tu Guía Semanal</h1>
-        <p class="tagline">BilliCactus · Olumi — Magia y recuerdos en cada creación</p>
+        <p class="tagline">BilliCactus · Olumi</p>
+        <p class="tagline-sub">Magia y recuerdos en cada creación</p>
       </div>
       <nav class="sidebar-nav">
-        <button class="nav-item active" data-section="tareas">✅ Tareas semanales</button>
-        <button class="nav-item" data-section="guias">📚 Guías</button>
-        <button class="nav-item" data-section="tips-ia">🤖 Tips IA</button>
-        <button class="nav-item" data-section="diarias">⏱️ Rutina diaria</button>
-        <button class="nav-item" data-section="motivacion">🌟 Motivación</button>
+        <button class="nav-item active" data-section="tareas">
+          <span class="nav-icon">✅</span>
+          <span class="nav-label">Tareas semanales</span>
+        </button>
+        <button class="nav-item" data-section="guia-angular">
+          <span class="nav-icon">🧱</span>
+          <span class="nav-label">Guía angular</span>
+        </button>
+        <button class="nav-item" data-section="guias">
+          <span class="nav-icon">📚</span>
+          <span class="nav-label">Guías</span>
+        </button>
+        <button class="nav-item" data-section="tips-ia">
+          <span class="nav-icon">🤖</span>
+          <span class="nav-label">Tips IA</span>
+        </button>
+        <button class="nav-item" data-section="diarias">
+          <span class="nav-icon">⏱️</span>
+          <span class="nav-label">Rutina diaria</span>
+        </button>
+        <button class="nav-item" data-section="motivacion">
+          <span class="nav-icon">🌟</span>
+          <span class="nav-label">Motivación</span>
+        </button>
       </nav>
       <div class="sidebar-footer">
         <div class="progress-card">
@@ -47,16 +69,19 @@
         <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema">Modo oscuro</button>
       </div>
     </aside>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <button class="sidebar-toggle" id="sidebarToggle" aria-label="Abrir menú">☰</button>
     <main class="content">
+
+      <!-- ========== TAREAS SEMANALES ========== -->
       <section class="panel active" id="panel-tareas">
         <header class="panel-header">
-          <h2>✨ Tu semana en orden</h2>
-          <p>Marca cada tarea al completarla. Recuerda: las guías tienen todo el detalle para que no te pierdas.</p>
+          <h2>Tu semana en orden</h2>
+          <p>Marca cada tarea al completarla. Las guías tienen todo el detalle para que no te pierdas.</p>
         </header>
         <div class="tasks-container">
           <article class="task-day" data-day="domingo">
-            <h3>🗓️ Domingo — Planificación (~30 min)</h3>
+            <h3><span class="day-emoji">🗓️</span> Domingo — Planificación <span class="time-badge">~30 min</span></h3>
             <ul class="task-list">
               <li><label><input type="checkbox" data-task="dom-1"> Abrir la Gema de Gemini</label></li>
               <li><label><input type="checkbox" data-task="dom-2"> Pedir calendario para Olumi <a href="#" class="link-guide" data-guide="calendario">Ver Guía</a></label></li>
@@ -68,68 +93,68 @@
             </ul>
           </article>
           <article class="task-day" data-day="lunes">
-            <h3>🌱 Lunes (~20 min)</h3>
+            <h3><span class="day-emoji">🌱</span> Lunes <span class="time-badge">~20 min</span></h3>
             <ul class="task-list">
-              <li><label><input type="checkbox" data-task="lun-1"> Pedir a la Gema captions para lunes y martes <a href="#" class="link-guide" data-guide="captions">Ver Guía Captions</a></label></li>
+              <li><label><input type="checkbox" data-task="lun-1"> Pedir a la Gema captions para lunes y martes <a href="#" class="link-guide" data-guide="captions">Ver Guía</a></label></li>
               <li><label><input type="checkbox" data-task="lun-2"> Copiar, ajustar con tu toque personal</label></li>
               <li><label><input type="checkbox" data-task="lun-3"> Programar posts en Meta Business Suite / Hookle</label></li>
             </ul>
           </article>
           <article class="task-day" data-day="martes">
-            <h3>🎯 Martes</h3>
+            <h3><span class="day-emoji">🎯</span> Martes</h3>
             <ul class="task-list">
               <li><label><input type="checkbox" data-task="mar-1"> Publicar según calendario</label></li>
               <li><label><input type="checkbox" data-task="mar-2"> Completar rutina diaria de engagement</label></li>
             </ul>
           </article>
           <article class="task-day" data-day="miercoles">
-            <h3>🎬 Miércoles (~20 min)</h3>
+            <h3><span class="day-emoji">🎬</span> Miércoles <span class="time-badge">~20 min</span></h3>
             <ul class="task-list">
-              <li><label><input type="checkbox" data-task="mie-1"> Pedir ideas de historias interactivas <a href="#" class="link-guide" data-guide="historias">Ver Guía Historias</a></label></li>
+              <li><label><input type="checkbox" data-task="mie-1"> Pedir ideas de historias interactivas <a href="#" class="link-guide" data-guide="historias">Ver Guía</a></label></li>
               <li><label><input type="checkbox" data-task="mie-2"> Pedir captions para jueves y viernes</label></li>
               <li><label><input type="checkbox" data-task="mie-3"> Preparar assets visuales en Canva</label></li>
             </ul>
           </article>
           <article class="task-day" data-day="jueves">
-            <h3>📌 Jueves</h3>
+            <h3><span class="day-emoji">📌</span> Jueves</h3>
             <ul class="task-list">
               <li><label><input type="checkbox" data-task="jue-1"> Publicar según calendario</label></li>
               <li><label><input type="checkbox" data-task="jue-2"> Rutina diaria de engagement</label></li>
             </ul>
           </article>
           <article class="task-day" data-day="viernes">
-            <h3>🚀 Viernes (~15 min)</h3>
+            <h3><span class="day-emoji">🚀</span> Viernes <span class="time-badge">~15 min</span></h3>
             <ul class="task-list">
-              <li><label><input type="checkbox" data-task="vie-1"> Pedir sugerencia de Reel para fin de semana <a href="#" class="link-guide" data-guide="reels">Ver Guía Reels</a></label></li>
+              <li><label><input type="checkbox" data-task="vie-1"> Pedir sugerencia de Reel para fin de semana <a href="#" class="link-guide" data-guide="reels">Ver Guía</a></label></li>
               <li><label><input type="checkbox" data-task="vie-2"> Pedir captions del fin de semana</label></li>
               <li><label><input type="checkbox" data-task="vie-3"> Editar Reel en CapCut</label></li>
               <li><label><input type="checkbox" data-task="vie-4"> Programar publicaciones del fin de semana</label></li>
             </ul>
           </article>
           <article class="task-day" data-day="sabado">
-            <h3>☀️ Sábado</h3>
+            <h3><span class="day-emoji">☀️</span> Sábado</h3>
             <ul class="task-list">
               <li><label><input type="checkbox" data-task="sab-1"> Publicar según calendario</label></li>
               <li><label><input type="checkbox" data-task="sab-2"> Rutina diaria de engagement</label></li>
             </ul>
           </article>
           <article class="task-day" data-day="cierre">
-            <h3>📊 Cierre de semana (domingo)</h3>
+            <h3><span class="day-emoji">📊</span> Cierre de semana (domingo)</h3>
             <ul class="task-list">
-              <li><label><input type="checkbox" data-task="cie-1"> Registrar métricas en el Sheet <a href="#" class="link-guide" data-guide="metricas">Ver Guía Métricas</a></label></li>
+              <li><label><input type="checkbox" data-task="cie-1"> Registrar métricas en el Sheet <a href="#" class="link-guide" data-guide="metricas">Ver Guía</a></label></li>
               <li><label><input type="checkbox" data-task="cie-2"> Etiquetar experimento y resultado (A o B)</label></li>
               <li><label><input type="checkbox" data-task="cie-3"> Pedir a la Gema análisis y sugerencias para próxima semana</label></li>
             </ul>
           </article>
           <article class="task-day task-day--marca" data-day="olumi">
-            <h3>🌿 Tareas Olumi</h3>
+            <h3><span class="day-emoji">🌿</span> Tareas Olumi</h3>
             <ul class="task-list">
               <li><label><input type="checkbox" data-task="olu-1"> Escribir en lote: 2 guiones reels + 2 carruseles + 3 stories</label></li>
               <li><label><input type="checkbox" data-task="olu-2"> Crear 2 carruseles y 2 portadas de reel en Canva</label></li>
             </ul>
           </article>
           <article class="task-day task-day--marca" data-day="billicactus">
-            <h3>💝 Tareas BilliCactus</h3>
+            <h3><span class="day-emoji">💝</span> Tareas BilliCactus</h3>
             <ul class="task-list">
               <li><label><input type="checkbox" data-task="bil-1"> Revisar DMs y responder pedidos según flujo de compra</label></li>
               <li><label><input type="checkbox" data-task="bil-2"> Solicitar permiso de publicación a clientes con testimonios</label></li>
@@ -137,389 +162,715 @@
           </article>
         </div>
       </section>
+
+      <!-- ========== GUIA ANGULAR (JOURNEY TIMELINE) ========== -->
+      <section class="panel" id="panel-guia-angular">
+        <header class="panel-header">
+          <h2>Guía angular</h2>
+          <p>Tu tutorial maestro para pasar de "publicar por intuición" a tener un sistema claro, medible y sostenible.</p>
+        </header>
+        <div class="journey-timeline">
+          <div class="journey-step" data-step="1">
+            <div class="journey-node">
+              <span class="journey-node__number">1</span>
+            </div>
+            <details class="journey-content">
+              <summary>Mentalidad y fundamentos</summary>
+              <div class="guide-content">
+                <h4>Qué cambia cuando gestionas redes con método</h4>
+                <p>Gestionar redes no es "subir cosas bonitas". Es construir confianza, conversación y ventas a lo largo del tiempo. La clave no es la perfección: es la consistencia con intención.</p>
+                <h4>Los 4 principios base</h4>
+                <ol>
+                  <li><strong>Autenticidad:</strong> La IA te apoya, pero tu voz y tu historia son el diferencial.</li>
+                  <li><strong>Consistencia:</strong> Mejor 3-5 publicaciones buenas por semana que picos esporádicos.</li>
+                  <li><strong>Relación:</strong> Responder comentarios y DMs es tan importante como publicar.</li>
+                  <li><strong>Aprendizaje:</strong> Cada semana de métricas debe dejar una mejora concreta.</li>
+                </ol>
+                <h4>Ejemplo rápido por marca</h4>
+                <p><strong>BilliCactus:</strong> No vendas "un cojín". Cuenta la historia del regalo, la persona y la emoción detrás de la ilustración.</p>
+                <p><strong>Olumi:</strong> No vendas "una toalla". Muestra el estilo de vida: playa, bienestar, color, energía y uso real.</p>
+              </div>
+            </details>
+          </div>
+          <div class="journey-step" data-step="2">
+            <div class="journey-node">
+              <span class="journey-node__number">2</span>
+            </div>
+            <details class="journey-content">
+              <summary>Objetivos y métricas clave</summary>
+              <div class="guide-content">
+                <h4>Define un objetivo principal por semana</h4>
+                <ul>
+                  <li><strong>Descubrimiento:</strong> Llegar a personas nuevas (alcance).</li>
+                  <li><strong>Comunidad:</strong> Conversar más (comentarios y DMs).</li>
+                  <li><strong>Conversión:</strong> Generar pedidos (clics y mensajes de compra).</li>
+                </ul>
+                <h4>Métricas que sí importan</h4>
+                <ul>
+                  <li><strong>Guardados:</strong> Indican valor real del contenido.</li>
+                  <li><strong>Compartidos:</strong> Empujan crecimiento orgánico.</li>
+                  <li><strong>Comentarios y DMs:</strong> Señalan interés y cercanía.</li>
+                  <li><strong>Clics al enlace:</strong> Señalan intención comercial.</li>
+                </ul>
+                <h4>Mini rutina de control (domingo)</h4>
+                <ol>
+                  <li>Revisa top 3 y bottom 3 publicaciones de la semana.</li>
+                  <li>Escribe 1 aprendizaje (ejemplo: "Los Reels de proceso funcionaron mejor").</li>
+                  <li>Define 1 ajuste para la semana siguiente (hook, CTA, hora o formato).</li>
+                </ol>
+                <h4>Ejemplos de foco semanal</h4>
+                <p><strong>BilliCactus:</strong> Objetivo comunidad. KPI foco: DMs y comentarios en publicaciones emocionales de clientes.</p>
+                <p><strong>Olumi:</strong> Objetivo descubrimiento. KPI foco: alcance y compartidos de Reels lifestyle.</p>
+              </div>
+            </details>
+          </div>
+          <div class="journey-step" data-step="3">
+            <div class="journey-node">
+              <span class="journey-node__number">3</span>
+            </div>
+            <details class="journey-content">
+              <summary>Pilares de contenido y regla 80/20</summary>
+              <div class="guide-content">
+                <h4>Regla 80/20 aplicada</h4>
+                <p>80% contenido de valor (educa, inspira, entretiene, conecta) y 20% venta directa. Si todo es venta, baja el engagement. Si todo es inspiración, no conviertes.</p>
+                <h4>Pilares recomendados</h4>
+                <table>
+                  <tr><th>Pilar</th><th>Objetivo</th><th>Ejemplo BilliCactus</th><th>Ejemplo Olumi</th></tr>
+                  <tr><td>Inspiración</td><td>Conectar emocionalmente</td><td>Historia de un regalo con significado</td><td>Post de bienestar y color para iniciar semana</td></tr>
+                  <tr><td>Educativo</td><td>Generar guardados</td><td>Guía de "qué regalar según ocasión"</td><td>Carrusel de cuidado de productos</td></tr>
+                  <tr><td>Detrás de escenas</td><td>Construir confianza</td><td>Proceso de ilustración a mano</td><td>Cómo nace un diseño desde la naturaleza</td></tr>
+                  <tr><td>Producto</td><td>Impulsar compra</td><td>Mug, cojín o cuadro terminado con CTA</td><td>Panoleta/tote bag en uso real</td></tr>
+                  <tr><td>Comunidad</td><td>Activar conversación</td><td>Encuesta sobre próximos diseños</td><td>Sticker de preguntas sobre estilo personal</td></tr>
+                </table>
+              </div>
+            </details>
+          </div>
+          <div class="journey-step" data-step="4">
+            <div class="journey-node">
+              <span class="journey-node__number">4</span>
+            </div>
+            <details class="journey-content">
+              <summary>Flujo semanal operativo</summary>
+              <div class="guide-content">
+                <h4>Sistema base de 7 días</h4>
+                <ol>
+                  <li><strong>Domingo:</strong> Planifica calendario y experimento semanal.</li>
+                  <li><strong>Lunes:</strong> Redacta captions de inicio de semana.</li>
+                  <li><strong>Miércoles:</strong> Prepara visuales y guiones pendientes.</li>
+                  <li><strong>Viernes:</strong> Cierra Reels y programa fin de semana.</li>
+                  <li><strong>Diario:</strong> 10-15 minutos de respuesta e interacción.</li>
+                </ol>
+                <h4>Checklist mínimo para personas empíricas</h4>
+                <ul>
+                  <li>Publica al menos 3 piezas en semana.</li>
+                  <li>Mantén historias activas 4-6 días.</li>
+                  <li>Responde mensajes en menos de 24 horas.</li>
+                  <li>Registra métricas una vez por semana.</li>
+                </ul>
+                <h4>Ejemplo práctico</h4>
+                <p><strong>BilliCactus:</strong> Semana enfocada en "regalos de cumpleaños". Publicas proceso + resultado + testimonio.</p>
+                <p><strong>Olumi:</strong> Semana enfocada en "escapada de fin de semana". Publicas Reel de uso + carrusel de ideas + historias interactivas.</p>
+              </div>
+            </details>
+          </div>
+          <div class="journey-step" data-step="5">
+            <div class="journey-node">
+              <span class="journey-node__number">5</span>
+            </div>
+            <details class="journey-content">
+              <summary>Guía por formatos</summary>
+              <div class="guide-content">
+                <h4>Post estático (rápido y directo)</h4>
+                <p>Úsalo para novedades, producto destacado y mensajes concretos. Ideal cuando tienes una buena foto y un caption fuerte.</p>
+                <h4>Carrusel (valor guardable)</h4>
+                <p>Úsalo para enseñar algo paso a paso o presentar varias ideas. Objetivo principal: guardados.</p>
+                <h4>Reel (alcance y descubrimiento)</h4>
+                <p>Úsalo para llegar a nuevos públicos. Estructura recomendada: 0-3s hook, 3-15s desarrollo, 15-25s clímax, 25-30s CTA.</p>
+                <h4>Historias (relación diaria)</h4>
+                <p>Úsalas para cercanía y conversación. Mezcla espontáneo con dinámicas interactivas (encuesta, pregunta, quiz).</p>
+                <h4>Ejemplo integrado de una semana</h4>
+                <ul>
+                  <li><strong>BilliCactus:</strong> Reel de proceso + carrusel de productos + historias del taller + post de pedido entregado.</li>
+                  <li><strong>Olumi:</strong> Reel lifestyle + carrusel educativo + historias con encuesta + post de producto en contexto.</li>
+                </ul>
+              </div>
+            </details>
+          </div>
+          <div class="journey-step" data-step="6">
+            <div class="journey-node">
+              <span class="journey-node__number">6</span>
+            </div>
+            <details class="journey-content">
+              <summary>Copywriting y prompts IA</summary>
+              <div class="guide-content">
+                <h4>Estructura de prompt que sí funciona</h4>
+                <p><strong>Rol + tarea + contexto + formato + restricciones.</strong> Mientras más específico seas, más usable será el resultado.</p>
+                <h4>Prompt base para caption</h4>
+                <pre>Actúa como copywriter para Instagram.
+Marca: [BilliCactus/Olumi].
+Objetivo del post: [alcance/comunidad/venta].
+Contenido: [qué se muestra].
+Tono: [emotivo para BilliCactus / vibrante para Olumi].
+Entrega: hook + cuerpo + CTA + 15 hashtags separados por puntos.
+Máximo: 220 palabras.</pre>
+                <h4>Prompt base para calendario semanal</h4>
+                <pre>Genera calendario semanal para [marca].
+Formato: Día | Formato | Pilar | Tema | Hook | CTA.
+Incluye regla 80/20 y horarios sugeridos para Colombia (7-9am, 12-2pm, 7-9pm).
+Contexto de la semana: [producto/campaña/fecha].</pre>
+                <h4>Cómo humanizar lo que entrega la IA</h4>
+                <ol>
+                  <li>Agrega una anécdota real del día.</li>
+                  <li>Ajusta palabras que no suenen a tu marca.</li>
+                  <li>Incluye detalle concreto del producto o cliente.</li>
+                </ol>
+              </div>
+            </details>
+          </div>
+          <div class="journey-step" data-step="7">
+            <div class="journey-node">
+              <span class="journey-node__number">7</span>
+            </div>
+            <details class="journey-content">
+              <summary>Gestión de comunidad</summary>
+              <div class="guide-content">
+                <h4>Rutina diaria de comunidad (15 minutos)</h4>
+                <ul>
+                  <li>Responder DMs y comentarios del día.</li>
+                  <li>Dar seguimiento a preguntas sin cerrar compra.</li>
+                  <li>Guardar frases reales de clientes para futuros hooks.</li>
+                </ul>
+                <h4>Guión corto para responder mensajes</h4>
+                <p><strong>BilliCactus:</strong> "Gracias por escribirnos. Cuéntame para qué ocasión es tu regalo y te ayudo a elegir el producto ideal."</p>
+                <p><strong>Olumi:</strong> "¡Qué alegría tenerte aquí! Te recomiendo opciones según tu estilo (playa, parque o yoga)."</p>
+                <h4>Seguimiento sin ser invasivo</h4>
+                <ol>
+                  <li>Primer mensaje: resolver duda y orientar.</li>
+                  <li>Si no responde: seguimiento amable en 24-48h.</li>
+                  <li>Cierre: CTA claro (pedido, catálogo o link).</li>
+                </ol>
+              </div>
+            </details>
+          </div>
+          <div class="journey-step" data-step="8">
+            <div class="journey-node">
+              <span class="journey-node__number">8</span>
+            </div>
+            <details class="journey-content">
+              <summary>Revisión e iteración mensual</summary>
+              <div class="guide-content">
+                <h4>Revisión de fin de mes (60 minutos)</h4>
+                <ol>
+                  <li>Identifica los 5 contenidos con mejor resultado.</li>
+                  <li>Detecta patrón: formato, hora, tema, hook, CTA.</li>
+                  <li>Elimina o ajusta lo que no funcionó.</li>
+                  <li>Duplica lo que sí funcionó para el siguiente mes.</li>
+                </ol>
+                <h4>Plantilla de decisiones para el próximo mes</h4>
+                <ul>
+                  <li><strong>Conservar:</strong> Qué repetirás.</li>
+                  <li><strong>Mejorar:</strong> Qué ajustarás.</li>
+                  <li><strong>Descartar:</strong> Qué dejarás de hacer.</li>
+                </ul>
+                <h4>Ejemplo de iteración</h4>
+                <p><strong>BilliCactus:</strong> Si los testimonios en Reel duplican guardados frente a fotos sueltas, prioriza testimonios en video la siguiente semana.</p>
+                <p><strong>Olumi:</strong> Si las historias con encuesta aumentan respuestas por DM, integra esa dinámica mínimo 3 veces por semana.</p>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== GUÍAS DE REFERENCIA (CARD GRID) ========== -->
       <section class="panel" id="panel-guias">
         <header class="panel-header">
-          <h2>🧭 Guías de referencia</h2>
-          <p>Todo el paso a paso para captions, Reels, historias y más. Aquí está el detalle cuando lo necesites.</p>
+          <h2>Guías de referencia</h2>
+          <p>Todo el paso a paso para captions, Reels, historias y más. Elige una guía para explorarla.</p>
         </header>
-        <div class="guides-container">
-          <details class="guide" open>
-            <summary>📝 Guía Captions — Cómo escribir textos que conecten</summary>
-            <div class="guide-content">
-              <h4>¿Qué es un caption y por qué importa?</h4>
-              <p>El caption es el texto que acompaña tu foto o video en Instagram. Aunque la imagen atrae, el caption es lo que detiene el scroll, genera emoción y convierte visitantes en seguidores o clientes. Un buen caption cuenta una historia o aporta valor, no solo describe la imagen.</p>
 
-              <h4>Estructura de un caption efectivo</h4>
-              <ol>
-                <li><strong>Hook (primera línea):</strong> Debe captar la atención en los primeros 125 caracteres (lo que se ve antes de "más"). Usa preguntas, sorpresas, emociones o curiosidad.</li>
-                <li><strong>Cuerpo:</strong> La historia, el valor o el mensaje. Cuenta el "por qué" detrás del producto, la emoción o el aprendizaje.</li>
-                <li><strong>CTA (call-to-action):</strong> Indica qué hacer: "Guarda para inspiración", "Escribe INFO", "Link en bio", "¿Cuál elegirías tú?"</li>
-                <li><strong>Hashtags:</strong> 15-20 separados por puntos (.) para que no se vean pegados al texto.</li>
-              </ol>
+        <div class="guides-grid" id="guidesGrid">
+          <button class="guide-card" data-guide-idx="0" style="--card-accent: #c4654a; --card-accent-light: #f4ddd7;">
+            <span class="guide-card__icon">📝</span>
+            <h3 class="guide-card__title">Captions</h3>
+            <p class="guide-card__desc">Textos que conectan y convierten</p>
+          </button>
+          <button class="guide-card" data-guide-idx="1" style="--card-accent: #8b5cf6; --card-accent-light: #ede9fe;">
+            <span class="guide-card__icon">🎬</span>
+            <h3 class="guide-card__title">Reels</h3>
+            <p class="guide-card__desc">Videos que el algoritmo premia</p>
+          </button>
+          <button class="guide-card" data-guide-idx="2" style="--card-accent: #6b8f68; --card-accent-light: #dceadb;">
+            <span class="guide-card__icon">📅</span>
+            <h3 class="guide-card__title">Calendario</h3>
+            <p class="guide-card__desc">Planificación semanal sin estrés</p>
+          </button>
+          <button class="guide-card" data-guide-idx="3" style="--card-accent: #d4a24e; --card-accent-light: #f5ecd8;">
+            <span class="guide-card__icon">💬</span>
+            <h3 class="guide-card__title">Historias</h3>
+            <p class="guide-card__desc">Contacto diario con tu comunidad</p>
+          </button>
+          <button class="guide-card" data-guide-idx="4" style="--card-accent: #e07b6a; --card-accent-light: #fce4e0;">
+            <span class="guide-card__icon">🖼️</span>
+            <h3 class="guide-card__title">Carruseles</h3>
+            <p class="guide-card__desc">Contenido que la gente guarda</p>
+          </button>
+          <button class="guide-card" data-guide-idx="5" style="--card-accent: #4a90a4; --card-accent-light: #d8eef4;">
+            <span class="guide-card__icon">🧠</span>
+            <h3 class="guide-card__title">Prompts IA</h3>
+            <p class="guide-card__desc">Cómo pedirle bien a la Gema</p>
+          </button>
+          <button class="guide-card" data-guide-idx="6" style="--card-accent: #7a6b8f; --card-accent-light: #e8e2f0;">
+            <span class="guide-card__icon">📈</span>
+            <h3 class="guide-card__title">Métricas</h3>
+            <p class="guide-card__desc">Qué medir y cómo aprender</p>
+          </button>
+          <button class="guide-card" data-guide-idx="7" style="--card-accent: #2d5a4a; --card-accent-light: #d4ebe3;">
+            <span class="guide-card__icon">📋</span>
+            <h3 class="guide-card__title">Base Gema</h3>
+            <p class="guide-card__desc">Identidad de marca para la Gema</p>
+          </button>
+        </div>
 
-              <h4>Voz por marca</h4>
-              <ul>
-                <li><strong>BilliCactus:</strong> Emotivo, cercano, caliente. Cuenta la historia detrás de cada pedido ("Este cojín fue para…", "El cliente lo regaló para…"). Usa emojis como 💝🎨✨. El diferencial: ilustración hecha A MANO, no filtros.</li>
-                <li><strong>Olumi:</strong> Vibrante, natural, fluido. Conexión con naturaleza, bienestar, energía positiva. Usa emojis de naturaleza: 🌸🌿🌻🦋🌊. Frases inspiracionales, magia en cada creación.</li>
-              </ul>
+        <div class="guide-detail" id="guideDetail" hidden>
+          <button class="guide-detail__back" id="guideBack">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Volver a guías
+          </button>
+          <div class="guide-detail__content" id="guideDetailContent"></div>
+        </div>
 
-              <h4>Longitud ideal</h4>
-              <p>150-300 caracteres para mejor engagement. Los captions muy largos a veces funcionan si la historia lo vale, pero para posts de producto, mejor conciso y directo.</p>
+        <!-- Hidden guide contents -->
+        <div id="guideContents" hidden>
+          <div data-guide-content="0">
+            <h3>Captions — Cómo escribir textos que conecten</h3>
+            <h4>¿Qué es un caption y por qué importa?</h4>
+            <p>El caption es el texto que acompaña tu foto o video en Instagram. Aunque la imagen atrae, el caption es lo que detiene el scroll, genera emoción y convierte visitantes en seguidores o clientes. Un buen caption cuenta una historia o aporta valor, no solo describe la imagen.</p>
+            <h4>Estructura de un caption efectivo</h4>
+            <ol>
+              <li><strong>Hook (primera línea):</strong> Debe captar la atención en los primeros 125 caracteres (lo que se ve antes de "más"). Usa preguntas, sorpresas, emociones o curiosidad.</li>
+              <li><strong>Cuerpo:</strong> La historia, el valor o el mensaje. Cuenta el "por qué" detrás del producto, la emoción o el aprendizaje.</li>
+              <li><strong>CTA (call-to-action):</strong> Indica qué hacer: "Guarda para inspiración", "Escribe INFO", "Link en bio", "¿Cuál elegirías tú?"</li>
+              <li><strong>Hashtags:</strong> 15-20 separados por puntos (.) para que no se vean pegados al texto.</li>
+            </ol>
+            <h4>Voz por marca</h4>
+            <ul>
+              <li><strong>BilliCactus:</strong> Emotivo, cercano, caliente. Cuenta la historia detrás de cada pedido. Usa emojis como 💝🎨✨. El diferencial: ilustración hecha A MANO, no filtros.</li>
+              <li><strong>Olumi:</strong> Vibrante, natural, fluido. Conexión con naturaleza, bienestar, energía positiva. Usa emojis de naturaleza: 🌸🌿🌻🦋🌊.</li>
+            </ul>
+            <h4>Longitud ideal</h4>
+            <p>150-300 caracteres para mejor engagement. Los captions muy largos a veces funcionan si la historia lo vale, pero para posts de producto, mejor conciso y directo.</p>
+            <h4>Hashtags: los 3 grupos</h4>
+            <ul>
+              <li><strong>Amplios (3-5):</strong> Alcance alto, competencia alta. Ej: #regalospersonalizados #emprendimiento #hechoencolombia</li>
+              <li><strong>Nicho (5-8):</strong> Audiencia más cualificada. Ej: #ilustraciondigital #regalosunico #diseñosnaturales #yogalife</li>
+              <li><strong>Branded (2-3):</strong> Tu marca. Ej: #BilliCactus #TransformaTusRecuerdos #Olumi #MagiaEnCadaCreacion</li>
+            </ul>
+            <h4>Ejemplos de hooks que funcionan</h4>
+            <p><strong>BilliCactus:</strong> "Si pudiera hablar, diría 'me retrataron hermoso' 🐶", "Abrazar este cojín es como abrazar a quien amas 🥹", "De foto a ARTE ✨"</p>
+            <p><strong>Olumi:</strong> "Tu próximo día de playa necesita ESTO 🏖️", "El accesorio que transforma cualquier outfit 🦋", "3 formas de ser la más estilosa del parque 🌻"</p>
+            <h4>Paso a paso con la Gema</h4>
+            <ol>
+              <li>Abre la Gema de Gemini.</li>
+              <li>Escribe: "Escribe un caption para [marca] mostrando [producto/escena específica]. El cliente lo pidió para [ocasión si aplica]. Tono [emotivo para BilliCactus / vibrante para Olumi]. Incluye hook, cuerpo corto, CTA y 15-20 hashtags separados por puntos."</li>
+              <li>Copia el resultado y <strong>siempre</strong> ajusta con tu toque personal: una anécdota real, un detalle que la IA no conoce.</li>
+              <li>Si no te convence: "Dame 3 versiones: una más emotiva, una más directa, una más divertida."</li>
+            </ol>
+            <h4>Errores a evitar</h4>
+            <ul>
+              <li>Publicar lo que genera la IA sin editar (suena a robot).</li>
+              <li>Prompts vagos ("escribe algo para Instagram").</li>
+              <li>Usar el mismo tono para ambas marcas.</li>
+              <li>Hashtags pegados al texto sin puntos.</li>
+            </ul>
+            <h4>Prompts listos para copiar</h4>
+            <div class="prompt-card" data-copyable>Escribe un caption para un post de [BilliCactus/Olumi] mostrando [producto/escena]. Tono [emotivo/vibrante]. Incluye hook, CTA y hashtags separados por puntos.</div>
+            <div class="prompt-card" data-copyable>Dame 3 versiones: una más emotiva, una más directa, una más divertida.</div>
+            <div class="prompt-card" data-copyable>Escribe caption para [marca]. Producto: [descripción]. El cliente lo regaló para [ocasión]. Máximo 250 palabras.</div>
+          </div>
 
-              <h4>Hashtags: los 3 grupos</h4>
-              <ul>
-                <li><strong>Amplios (3-5):</strong> Alcance alto, competencia alta. Ej: #regalospersonalizados #emprendimiento #hechoencolombia</li>
-                <li><strong>Nicho (5-8):</strong> Audiencia más cualificada. Ej: #ilustraciondigital #regalosunico #diseñosnaturales #yogalife</li>
-                <li><strong>Branded (2-3):</strong> Tu marca. Ej: #BilliCactus #TransformaTusRecuerdos #Olumi #MagiaEnCadaCreacion</li>
-              </ul>
+          <div data-guide-content="1">
+            <h3>Reels — Videos que el algoritmo premia</h3>
+            <h4>¿Por qué los Reels son prioritarios?</h4>
+            <p>Instagram da más alcance a los Reels que a los posts estáticos. Un Reel bien hecho puede llegar a miles de personas que no te siguen. La clave: captar en los primeros 3 segundos (el hook) y mantener el ritmo hasta el final.</p>
+            <h4>Estructura segundo a segundo (15-30 segundos ideal)</h4>
+            <table>
+              <tr><th>Tiempo</th><th>Qué mostrar</th></tr>
+              <tr><td><strong>0-3s Hook</strong></td><td>Lo más impactante: transición, pregunta, sorpresa.</td></tr>
+              <tr><td><strong>3-15s Desarrollo</strong></td><td>El proceso o la historia. Time-lapse, producto en uso.</td></tr>
+              <tr><td><strong>15-25s Climax</strong></td><td>Reveal final, resultado, "ta-daaa".</td></tr>
+              <tr><td><strong>25-30s CTA</strong></td><td>Logo + "Pide el tuyo", "Link en bio".</td></tr>
+            </table>
+            <h4>Ideas BilliCactus (reciclables)</h4>
+            <ul>
+              <li><strong>De foto a arte:</strong> Muestra la foto original → proceso de ilustración → producto final.</li>
+              <li><strong>Time-lapse de creación:</strong> Graba en iPad mientras ilustras.</li>
+              <li><strong>Reacción del cliente:</strong> Si tienes video de alguien recibiendo su regalo, es oro puro.</li>
+              <li><strong>POV:</strong> "POV: estás por recibir un regalo de BilliCactus" — empaque, apertura, reacción.</li>
+              <li><strong>Qué regalar:</strong> "Qué regalar a alguien que lo tiene todo" — muestra variedad de productos.</li>
+            </ul>
+            <h4>Ideas Olumi (reciclables)</h4>
+            <ul>
+              <li><strong>Producto en contexto lifestyle:</strong> Close-up textura → modelo usando producto → paisaje.</li>
+              <li><strong>3 formas de usar [producto]:</strong> "3 formas de amarrar tu panoleta Olumi".</li>
+              <li><strong>Unboxing aesthetic:</strong> Paquete cerrado → abriendo → sacando producto → reacción.</li>
+              <li><strong>Color reveal:</strong> Escena en blanco y negro → transición → explosión de colores.</li>
+              <li><strong>Naturaleza → diseño → producto:</strong> Flor real → diseño inspirado → producto final.</li>
+            </ul>
+            <h4>Herramientas: CapCut (gratis)</h4>
+            <p>CapCut tiene plantillas trending actualizadas, subtítulos automáticos con IA, y música popular. Exporta en 1080p sin marca de agua.</p>
+            <h4>Checklist antes de publicar</h4>
+            <ul>
+              <li>Texto en pantalla legible (tamaño grande, contraste).</li>
+              <li>Audio: trending o voz propia (evita silencio total).</li>
+              <li>Portada coherente con tu feed.</li>
+              <li>Primeros 3 segundos: ¿detendrían el scroll?</li>
+              <li>Subtítulos si hablas (accesibilidad + engagement).</li>
+            </ul>
+            <h4>Prompt listo</h4>
+            <div class="prompt-card" data-copyable>Dame 3 ideas de Reels para [marca] mostrando [tema]. Incluye estructura segundo a segundo (hook, desarrollo, climax, CTA), texto en pantalla línea por línea, y tipo de audio recomendado.</div>
+          </div>
 
-              <h4>Ejemplos de hooks que funcionan</h4>
-              <p><strong>BilliCactus:</strong> "Si pudiera hablar, diría 'me retrataron hermoso' 🐶", "Abrazar este cojín es como abrazar a quien amas 🥹", "De foto a ARTE ✨"</p>
-              <p><strong>Olumi:</strong> "Tu próximo día de playa necesita ESTO 🏖️", "El accesorio que transforma cualquier outfit 🦋", "3 formas de ser la más estilosa del parque 🌻"</p>
-
-              <h4>Paso a paso: cómo crear tu caption con la Gema</h4>
-              <ol>
-                <li>Abre la Gema de Gemini.</li>
-                <li>Escribe: "Escribe un caption para [marca] mostrando [producto/escena específica]. El cliente lo pidió para [ocasión si aplica]. Tono [emotivo para BilliCactus / vibrante para Olumi]. Incluye hook, cuerpo corto, CTA y 15-20 hashtags separados por puntos."</li>
-                <li>Copia el resultado y <strong>siempre</strong> ajusta con tu toque personal: una anécdota real, un detalle que la IA no conoce.</li>
-                <li>Si no te convence: "Dame 3 versiones: una más emotiva, una más directa, una más divertida."</li>
-              </ol>
-
-              <h4>Errores a evitar</h4>
-              <ul>
-                <li>Publicar lo que genera la IA sin editar (suena a robot).</li>
-                <li>Prompts vagos ("escribe algo para Instagram").</li>
-                <li>Usar el mismo tono para ambas marcas.</li>
-                <li>Hashtags pegados al texto sin puntos.</li>
-              </ul>
-
-              <h4>Prompts listos para copiar</h4>
-              <pre>Escribe un caption para un post de [BilliCactus/Olumi] mostrando [producto/escena]. Tono [emotivo/vibrante]. Incluye hook, CTA y hashtags separados por puntos.</pre>
-              <pre>Dame 3 versiones: una más emotiva, una más directa, una más divertida.</pre>
-              <pre>Escribe caption para [marca]. Producto: [descripción]. El cliente lo regaló para [ocasión]. Máximo 250 palabras.</pre>
-            </div>
-          </details>
-          <details class="guide">
-            <summary>🎬 Guía Reels — Videos que el algoritmo premia</summary>
-            <div class="guide-content">
-              <h4>¿Por qué los Reels son prioritarios?</h4>
-              <p>Instagram da más alcance a los Reels que a los posts estáticos. Un Reel bien hecho puede llegar a miles de personas que no te siguen. La clave: captar en los primeros 3 segundos (el hook) y mantener el ritmo hasta el final.</p>
-
-              <h4>Estructura segundo a segundo (15-30 segundos ideal)</h4>
-              <table>
-                <tr><th>Tiempo</th><th>Qué mostrar</th></tr>
-                <tr><td><strong>0-3s Hook</strong></td><td>Lo más impactante: transición, pregunta, sorpresa. "De foto a ARTE" o close-up de textura.</td></tr>
-                <tr><td><strong>3-15s Desarrollo</strong></td><td>El proceso o la historia. Time-lapse, producto en uso, contexto.</td></tr>
-                <tr><td><strong>15-25s Climax</strong></td><td>Reveal final, resultado, "ta-daaa".</td></tr>
-                <tr><td><strong>25-30s CTA</strong></td><td>Logo + "Pide el tuyo", "Link en bio", "Guarda para inspiración".</td></tr>
-              </table>
-
-              <h4>Ideas BilliCactus (reciclables)</h4>
-              <ul>
-                <li><strong>De foto a arte:</strong> Muestra la foto original → proceso de ilustración → producto final. Audio trending de transición.</li>
-                <li><strong>Time-lapse de creación:</strong> Graba en iPad mientras ilustras. "30 segundos para mostrarte horas de amor".</li>
-                <li><strong>Reacción del cliente:</strong> Si tienes video de alguien recibiendo su regalo, es oro puro.</li>
-                <li><strong>POV:</strong> "POV: estás por recibir un regalo de BilliCactus" — empaque, apertura, reacción.</li>
-                <li><strong>Qué regalar:</strong> "Qué regalar a alguien que lo tiene todo" — muestra variedad de productos.</li>
-              </ul>
-
-              <h4>Ideas Olumi (reciclables)</h4>
-              <ul>
-                <li><strong>Producto en contexto lifestyle:</strong> Close-up textura → modelo usando producto → paisaje. Música indie/tropical.</li>
-                <li><strong>3 formas de usar [producto]:</strong> "3 formas de amarrar tu panoleta Olumi" — Forma 1, 2, 3, CTA.</li>
-                <li><strong>Unboxing aesthetic:</strong> Paquete cerrado → abriendo → sacando producto → reacción → desplegando.</li>
-                <li><strong>Color reveal:</strong> Escena en blanco y negro → transición → explosión de colores. Drop musical.</li>
-                <li><strong>Naturaleza → diseño → producto:</strong> Flor real → diseño inspirado → producto final. "La naturaleza inspira cada diseño."</li>
-                <li><strong>"Qué llevaría a…":</strong> "Qué llevo a la playa" / "al parque" / "al yoga" — selección de productos.</li>
-              </ul>
-
-              <h4>Herramientas: CapCut (gratis)</h4>
-              <p>CapCut tiene plantillas trending actualizadas, subtítulos automáticos con IA, y música popular. Exporta en 1080p sin marca de agua. Busca plantillas de "antes/después" o "satisfying" según tu concepto.</p>
-
-              <h4>Checklist antes de publicar</h4>
-              <ul>
-                <li>Texto en pantalla legible (tamaño grande, contraste).</li>
-                <li>Audio: trending o voz propia (evita silencio total).</li>
-                <li>Portada coherente con tu feed (frame que represente el contenido).</li>
-                <li>Primeros 3 segundos: ¿detendrían el scroll?</li>
-                <li>Subtítulos si hablas (accesibilidad + engagement).</li>
-              </ul>
-
-              <h4>Paso a paso: crear un Reel con la Gema</h4>
-              <ol>
-                <li>Pide a la Gema: "Dame 3 ideas de Reels para [marca] mostrando [tema/producto]. Incluye estructura segundo a segundo, texto en pantalla línea por línea, y tipo de audio."</li>
-                <li>Elige una idea y graba los clips necesarios.</li>
-                <li>En CapCut: importa, aplica plantilla o corta manualmente, añade texto, música, subtítulos.</li>
-                <li>Pide caption: "Escribe caption para este Reel de [marca] que muestra [resumen]. Máximo 150 palabras."</li>
-              </ol>
-
-              <h4>Prompt listo para la Gema</h4>
-              <pre>Dame 3 ideas de Reels para [marca] mostrando [tema]. Incluye estructura segundo a segundo (hook, desarrollo, climax, CTA), texto en pantalla línea por línea, y tipo de audio recomendado.</pre>
-            </div>
-          </details>
-          <details class="guide">
-            <summary>📅 Guía Calendario / Planificación semanal</summary>
-            <div class="guide-content">
-              <h4>¿Por qué planificar con una semana de anticipación?</h4>
-              <p>Planificar evita el "¿qué publico hoy?" que quema energía. Con un calendario claro, creas en lote, programas y solo interactúas cada día. Reduces estrés y mantienes consistencia (lo que el algoritmo premia).</p>
-
-              <h4>Paso 1: Antes de pedir el calendario a la Gema</h4>
-              <ul>
-                <li><strong>Revisa la semana anterior:</strong> Top 3 y bottom 3 publicaciones. ¿Qué funcionó? ¿Qué no?</li>
-                <li><strong>Define 1 aprendizaje:</strong> "Los Reels de proceso tuvieron más alcance" o "Los carruseles generaron más guardados".</li>
-                <li><strong>Elige el foco de la semana:</strong> 1 colección (Olumi), 1 producto estrella (BilliCactus), o 1 emoción (calma, amor, verano).</li>
-                <li><strong>Define 1 experimento:</strong> Probar diferente hook, portada, CTA u horario. Solo una variable para aprender.</li>
-              </ul>
-
-              <h4>Paso 2: Cómo pedir el calendario a la Gema</h4>
-              <p>Prompt completo:</p>
-              <pre>Genera un calendario de contenido para esta semana para [marca].
+          <div data-guide-content="2">
+            <h3>Calendario / Planificación semanal</h3>
+            <h4>¿Por qué planificar con una semana de anticipación?</h4>
+            <p>Planificar evita el "¿qué publico hoy?" que quema energía. Con un calendario claro, creas en lote, programas y solo interactúas cada día. Reduces estrés y mantienes consistencia.</p>
+            <h4>Paso 1: Antes de pedir el calendario</h4>
+            <ul>
+              <li><strong>Revisa la semana anterior:</strong> Top 3 y bottom 3 publicaciones.</li>
+              <li><strong>Define 1 aprendizaje:</strong> "Los Reels de proceso tuvieron más alcance".</li>
+              <li><strong>Elige el foco de la semana:</strong> 1 colección, 1 producto estrella, o 1 emoción.</li>
+              <li><strong>Define 1 experimento:</strong> Probar diferente hook, portada, CTA u horario.</li>
+            </ul>
+            <h4>Prompt para el calendario</h4>
+            <div class="prompt-card" data-copyable>Genera un calendario de contenido para esta semana para [marca].
 Formato tabla: Día | Formato | Pilar | Tema | Hook sugerido | CTA
 Tema/foco de la semana: [colección/producto/emoción].
-[Si hay fecha especial: Incluye contenido para [fecha].]</pre>
+[Si hay fecha especial: Incluye contenido para [fecha].]</div>
+            <h4>Mix de contenido: regla 80/20</h4>
+            <p>80% contenido de valor y 20% venta directa. Si solo vendes, la gente se cansa. Si solo inspiras sin invitar a comprar, no conviertes.</p>
+            <h4>Output base por marca</h4>
+            <p><strong>Olumi (etapa crecimiento):</strong> 2 Reels + 2 Carruseles + 3 secuencias de Stories + 1 experimento.</p>
+            <p><strong>BilliCactus (marca establecida):</strong> 4-5 posts feed + 2-3 Reels + historias diarias.</p>
+            <h4>Horarios óptimos (Colombia)</h4>
+            <ul>
+              <li><strong>7:30-9:00:</strong> Mañana, posts inspiracionales, Reels.</li>
+              <li><strong>12:30-14:00:</strong> Mediodía, carruseles, contenido educativo.</li>
+              <li><strong>19:00-21:00:</strong> Noche, productos, historias emocionales.</li>
+            </ul>
+            <h4>Fechas clave</h4>
+            <p>San Valentín (14 feb), Día Mujer (8 mar), Día Madre (mayo), Amor y Amistad (sep), Navidad (dic).</p>
+          </div>
 
-              <h4>Mix de contenido: regla 80/20</h4>
-              <p>80% contenido de valor (historias, educación, inspiración, detrás de escenas) y 20% venta directa. Si solo vendes, la gente se cansa. Si solo inspiras sin invitar a comprar, no conviertes.</p>
+          <div data-guide-content="3">
+            <h3>Historias — El contacto diario con tu comunidad</h3>
+            <h4>¿Por qué las historias importan?</h4>
+            <p>Las historias son contenido efímero (24h) que mantiene a tu audiencia conectada. Generan confianza, muestran el "detrás de escenas" y, con stickers, impulsan respuestas y DMs.</p>
+            <h4>Regla de oro: espontáneo + estratégico</h4>
+            <p><strong>Nunca uses IA para historias del día a día.</strong> Las historias espontáneas son las que conectan. La IA sí puede ayudarte con IDEAS de historias interactivas que programes.</p>
+            <h4>BilliCactus — Secuencia diaria sugerida</h4>
+            <table>
+              <tr><th>Momento</th><th>Ejemplo</th></tr>
+              <tr><td>Buenos días</td><td>"Arrancando el día con nuevos pedidos ✨"</td></tr>
+              <tr><td>Proceso</td><td>Foto/video del trabajo en progreso</td></tr>
+              <tr><td>Interactiva</td><td>Encuesta o pregunta con sticker</td></tr>
+              <tr><td>Producto</td><td>Pedido terminado o testimonio</td></tr>
+              <tr><td>Cierre</td><td>Agradecimiento o anticipar mañana</td></tr>
+            </table>
+            <h4>Olumi — Estructura de secuencia</h4>
+            <p>Hook → Desarrollo → Interacción (sticker) → Demostración → Cierre + CTA suave.</p>
+            <h4>Stickers que generan engagement</h4>
+            <ul>
+              <li><strong>Encuesta:</strong> "¿Cuál estilo prefieres? A o B"</li>
+              <li><strong>Pregunta:</strong> "¿Para quién sería tu próximo regalo?"</li>
+              <li><strong>Quiz:</strong> "¿Qué producto eres según tu signo?"</li>
+              <li><strong>Cuenta regresiva:</strong> Lanzamiento, fecha especial.</li>
+              <li><strong>Slider/emoji:</strong> "¿Cuánto te gusta este diseño? 😍"</li>
+            </ul>
+            <h4>Prompt listo</h4>
+            <div class="prompt-card" data-copyable>Dame ideas de historias interactivas para hoy para [marca]. Incluye stickers concretos (encuesta, pregunta, quiz) y preguntas que generen respuestas en los comentarios o DMs.</div>
+          </div>
 
-              <h4>Output base por marca</h4>
-              <p><strong>Olumi (etapa crecimiento):</strong> 2 Reels + 2 Carruseles + 3 secuencias de Stories + 1 experimento. Pilares: naturaleza/diseño, bienestar, producto en uso, detrás de escenas, educación, venta suave.</p>
-              <p><strong>BilliCactus (marca establecida):</strong> 4-5 posts feed + 2-3 Reels + historias diarias. Mix: producto terminado (30%), proceso creativo (25%), historias emocionales (20%), engagement (15%), educativo (10%).</p>
+          <div data-guide-content="4">
+            <h3>Carruseles — Contenido que la gente guarda</h3>
+            <h4>¿Por qué los carruseles generan guardados?</h4>
+            <p>Los carruseles son posts con varias "diapositivas" que el usuario desliza. Son ideales para contenido educativo. La gente los guarda para consultar después, y los guardados le dicen al algoritmo que tu contenido es valioso.</p>
+            <h4>Estructura estándar (7-9 slides)</h4>
+            <ul>
+              <li><strong>Slide 1 (portada):</strong> Título impactante, hook visual. Debe invitar a deslizar.</li>
+              <li><strong>Slides 2-8 (contenido):</strong> Un concepto por slide. Texto legible, imágenes coherentes.</li>
+              <li><strong>Slide final (CTA):</strong> "Guarda para cuando lo necesites", "¿Cuál aplicas tú?".</li>
+            </ul>
+            <h4>Ideas BilliCactus</h4>
+            <ul>
+              <li>Catálogo completo: todos nuestros productos con precios.</li>
+              <li>Proceso paso a paso: así creamos tu regalo.</li>
+              <li>10 clientes felices este mes (testimonios con fotos).</li>
+              <li>Guía de regalos para fechas especiales.</li>
+              <li>5 razones para regalar algo personalizado.</li>
+            </ul>
+            <h4>Ideas Olumi (por pilar)</h4>
+            <ul>
+              <li><strong>Naturaleza y diseño:</strong> "Este patrón nació de una caminata".</li>
+              <li><strong>Bienestar:</strong> "5 posturas de yoga para principiantes".</li>
+              <li><strong>Producto en uso:</strong> "3 formas de usar tu panoleta en un solo día".</li>
+              <li><strong>Educación:</strong> "Para que te dure más (sin perder color)".</li>
+              <li><strong>Valores:</strong> "Por qué hacemos lo que hacemos".</li>
+            </ul>
+            <h4>Diseño en Canva</h4>
+            <p>Usa la misma plantilla, márgenes, tipografía y paleta en todos los slides. Así tu feed se ve profesional y coherente.</p>
+            <h4>Prompt para la Gema</h4>
+            <div class="prompt-card" data-copyable>Crea la estructura de un carrusel de [X] slides para [marca] sobre [tema]. Slide 1: título/hook. Slides 2-[X-1]: contenido. Slide final: CTA. Incluye texto sugerido para cada slide.</div>
+          </div>
 
-              <h4>Horarios óptimos (Colombia)</h4>
-              <ul>
-                <li><strong>7:30-9:00:</strong> Mañana, posts inspiracionales, Reels.</li>
-                <li><strong>12:30-14:00:</strong> Mediodía, carruseles, contenido educativo.</li>
-                <li><strong>19:00-21:00:</strong> Noche, productos, historias emocionales.</li>
-              </ul>
+          <div data-guide-content="5">
+            <h3>Prompts para la Gema — Cómo pedirle bien a la IA</h3>
+            <h4>¿Qué es un prompt y por qué importa?</h4>
+            <p>Un prompt es la instrucción que le das a la Gema. Cuanto más específico seas, mejor será el resultado. Un prompt vago produce contenido genérico. Un prompt detallado produce contenido usable.</p>
+            <h4>Estructura del buen prompt</h4>
+            <ol>
+              <li><strong>Rol (opcional pero ayuda):</strong> "Actúa como copywriter experto en Instagram para emprendimientos creativos."</li>
+              <li><strong>Tarea:</strong> "Escribe un caption para..." / "Genera un calendario..."</li>
+              <li><strong>Contexto:</strong> Marca, producto, ocasión, audiencia, tono.</li>
+              <li><strong>Formato:</strong> "Formato tabla" / "Incluye hook, cuerpo y CTA".</li>
+              <li><strong>Restricciones:</strong> "Máximo 250 palabras" / "Tono emotivo, no corporativo".</li>
+            </ol>
+            <h4>Prompt malo vs bueno</h4>
+            <p><strong>Malo:</strong> "Escribe un post de Instagram"</p>
+            <p><strong>Bueno:</strong> "Escribe un caption para BilliCactus (@billicactus). El post muestra un cojín personalizado con la ilustración de un golden retriever llamado Max. El cliente lo regaló para el cumpleaños de su esposa. Tono: cálido, emotivo, cercano. Incluye hook en la primera línea, CTA y 15 hashtags al final separados por puntos. Máximo 200 palabras."</p>
+            <h4>Prompts reutilizables</h4>
+            <div class="prompt-card" data-copyable>Necesito ideas de contenido para [marca] para la próxima semana. [contexto: fecha especial, tema]. Dame un calendario con día, formato, pilar y descripción breve.</div>
+            <div class="prompt-card" data-copyable>Escribe caption para [marca], producto [descripción], tono [emotivo/vibrante], incluye hook, CTA y 15-20 hashtags. Longitud 150-250 caracteres.</div>
+            <div class="prompt-card" data-copyable>Dame 3 ideas de Reels para [marca] sobre [tema]. Incluye estructura segundo a segundo, texto en pantalla y tipo de audio.</div>
+            <div class="prompt-card" data-copyable>Analiza estos resultados: [pegar métricas]. ¿Qué funcionó mejor? ¿Patrones de horario o formato? 3 recomendaciones concretas para la próxima semana.</div>
+            <h4>Errores a evitar</h4>
+            <ul>
+              <li>Prompts vagos: "escribe algo", "dame ideas".</li>
+              <li>No especificar la marca.</li>
+              <li>Publicar sin editar lo que genera la IA.</li>
+              <li>Usar el mismo prompt para todo.</li>
+            </ul>
+            <h4>Tip: pide variaciones</h4>
+            <p>Si un caption no te convence: "Dame 3 variaciones: una más emotiva, una más directa, una más divertida."</p>
+          </div>
 
-              <h4>Fechas clave para planificar con anticipación</h4>
-              <p>BilliCactus necesita ANTICIPAR pedidos (cada ilustración toma tiempo). Olumi puede aprovechar fechas para colecciones. San Valentín (14 feb), Día Mujer (8 mar), Día Madre (mayo), Amor y Amistad (sep), Navidad (dic).</p>
-
-              <h4>Rutina sugerida: planificar el domingo</h4>
-              <ol>
-                <li>Abrir la Gema.</li>
-                <li>Pedir calendario para Olumi y BilliCactus por separado.</li>
-                <li>Revisar y ajustar según tu disponibilidad.</li>
-                <li>Anotar en Hookle/Meta Business Suite o en una hoja.</li>
-                <li>Bloquear tiempo para crear: lunes/martes captions, miércoles visuales, viernes Reels.</li>
-              </ol>
-            </div>
-          </details>
-          <details class="guide">
-            <summary>💬 Guía Historias — El contacto diario con tu comunidad</summary>
-            <div class="guide-content">
-              <h4>¿Por qué las historias importan?</h4>
-              <p>Las historias son contenido efímero (24h) que mantiene a tu audiencia conectada. Generan confianza, muestran el "detrás de escenas" y, con stickers, impulsan respuestas y DMs. El algoritmo favorece a quienes publican historias con frecuencia.</p>
-
-              <h4>Regla de oro: espontáneo + estratégico</h4>
-              <p><strong>Nunca uses IA para historias del día a día.</strong> Las historias espontáneas (tu mañana, tu proceso, tu reacción) son las que conectan. La IA sí puede ayudarte con IDEAS de historias interactivas (encuestas, preguntas) que programes o prepares.</p>
-
-              <h4>Secuencia tipo: 3-5 historias con hilo narrativo</h4>
-              <p>En vez de publicar fotos sueltas, agrupa 3-5 historias que cuenten una mini-historia o un tema. Termina con un sticker que invite a interactuar.</p>
-
-              <h4>BilliCactus — Secuencia diaria sugerida</h4>
-              <table>
-                <tr><th>Momento</th><th>Ejemplo</th></tr>
-                <tr><td>Buenos días</td><td>"Arrancando el día con nuevos pedidos ✨"</td></tr>
-                <tr><td>Proceso</td><td>Foto/video del trabajo en progreso</td></tr>
-                <tr><td>Interactiva</td><td>Encuesta o pregunta con sticker</td></tr>
-                <tr><td>Producto</td><td>Pedido terminado o testimonio</td></tr>
-                <tr><td>Cierre</td><td>Agradecimiento o anticipar mañana</td></tr>
-              </table>
-
-              <h4>Olumi — Estructura de secuencia estratégica</h4>
-              <p>Hook → Desarrollo → Interacción (sticker) → Demostración → Cierre + CTA suave.</p>
-
-              <h4>Stickers que generan engagement</h4>
-              <ul>
-                <li><strong>Encuesta:</strong> "¿Cuál estilo prefieres? A o B"</li>
-                <li><strong>Pregunta:</strong> "¿Para quién sería tu próximo regalo?"</li>
-                <li><strong>Quiz:</strong> "¿Qué producto eres según tu signo?"</li>
-                <li><strong>Cuenta regresiva:</strong> Lanzamiento, fecha especial.</li>
-                <li><strong>Slider/emoji:</strong> "¿Cuánto te gusta este diseño? 😍"</li>
-              </ul>
-
-              <h4>Paso a paso: preparar historias interactivas</h4>
-              <ol>
-                <li>Pide a la Gema: "Dame ideas de historias interactivas para hoy para [marca]. Incluye stickers concretos y preguntas que generen respuestas."</li>
-                <li>Elige 1-2 ideas y anótalas en tu calendario.</li>
-                <li>Cuando llegue el momento, graba o toma fotos en el momento (espontáneo).</li>
-                <li>Añade el sticker sugerido y publica.</li>
-              </ol>
-
-              <h4>Prompt listo para la Gema</h4>
-              <pre>Dame ideas de historias interactivas para hoy para [marca]. Incluye stickers concretos (encuesta, pregunta, quiz) y preguntas que generen respuestas en los comentarios o DMs.</pre>
-            </div>
-          </details>
-          <details class="guide">
-            <summary>🖼️ Guía Carruseles — Contenido que la gente guarda</summary>
-            <div class="guide-content">
-              <h4>¿Por qué los carruseles generan guardados?</h4>
-              <p>Los carruseles son posts con varias "diapositivas" que el usuario desliza. Son ideales para contenido educativo, listas y guías. La gente los guarda para consultar después, y los guardados le dicen al algoritmo que tu contenido es valioso.</p>
-
-              <h4>Estructura estándar (7-9 slides)</h4>
-              <ul>
-                <li><strong>Slide 1 (portada):</strong> Título impactante, hook visual. Debe invitar a deslizar.</li>
-                <li><strong>Slides 2-8 (contenido):</strong> Un concepto por slide. Texto legible, imágenes coherentes.</li>
-                <li><strong>Slide final (CTA):</strong> "Guarda para cuando lo necesites", "¿Cuál aplicas tú?", "Link en bio para más".</li>
-              </ul>
-
-              <h4>Ideas BilliCactus</h4>
-              <ul>
-                <li>Catálogo completo: todos nuestros productos con precios.</li>
-                <li>Proceso paso a paso: así creamos tu regalo (foto → ilustración → producto).</li>
-                <li>10 clientes felices este mes (testimonios con fotos).</li>
-                <li>Guía de regalos para [San Valentín / Día de la Madre / Navidad].</li>
-                <li>5 razones para regalar algo personalizado.</li>
-              </ul>
-
-              <h4>Ideas Olumi (por pilar)</h4>
-              <ul>
-                <li><strong>Naturaleza y diseño:</strong> "Este patrón nació de una caminata" — origen del diseño.</li>
-                <li><strong>Bienestar:</strong> "5 posturas de yoga para principiantes" o "3 hábitos de mañana para energía positiva".</li>
-                <li><strong>Producto en uso:</strong> "3 formas de usar tu panoleta en un solo día".</li>
-                <li><strong>Educación:</strong> "Para que te dure más (sin perder color)" — cuidado del producto.</li>
-                <li><strong>Valores:</strong> "Por qué hacemos lo que hacemos" — historia de marca.</li>
-              </ul>
-
-              <h4>Diseño en Canva: coherencia visual</h4>
-              <p>Usa la misma plantilla, márgenes, tipografía y paleta en todos los slides. Crea plantillas base para cada marca y reutilízalas. Así tu feed se ve profesional y coherente.</p>
-
-              <h4>Caption para carruseles</h4>
-              <p>Incluye un caption corto (hook + resumen) y uno largo si quieres contar más. Hashtags al final separados por puntos. CTA en el caption: "Desliza para ver la guía completa 📌"</p>
-
-              <h4>Prompt para la Gema</h4>
-              <pre>Crea la estructura de un carrusel de [X] slides para [marca] sobre [tema]. Slide 1: título/hook. Slides 2-[X-1]: contenido. Slide final: CTA. Incluye texto sugerido para cada slide.</pre>
-            </div>
-          </details>
-          <details class="guide">
-            <summary>🧠 Guía Prompts para la Gema — Cómo pedirle bien a la IA</summary>
-            <div class="guide-content">
-              <h4>¿Qué es un prompt y por qué importa?</h4>
-              <p>Un prompt es la instrucción que le das a la Gema (o a cualquier IA). Cuanto más específico seas, mejor será el resultado. Un prompt vago ("escribe algo para Instagram") produce contenido genérico. Un prompt detallado produce contenido usable.</p>
-
-              <h4>Estructura del buen prompt</h4>
-              <ol>
-                <li><strong>Rol (opcional pero ayuda):</strong> "Actúa como copywriter experto en Instagram para emprendimientos creativos."</li>
-                <li><strong>Tarea:</strong> "Escribe un caption para..." / "Genera un calendario..." / "Dame 3 ideas de..."</li>
-                <li><strong>Contexto:</strong> Marca, producto, ocasión, audiencia, tono.</li>
-                <li><strong>Formato:</strong> "Formato tabla" / "Incluye hook, cuerpo y CTA" / "15-20 hashtags separados por puntos."</li>
-                <li><strong>Restricciones:</strong> "Máximo 250 palabras" / "Tono emotivo, no corporativo" / "Sin lenguaje genérico de marketing."</li>
-              </ol>
-
-              <h4>Ejemplo: prompt malo vs bueno</h4>
-              <p><strong>Malo:</strong> "Escribe un post de Instagram"</p>
-              <p><strong>Bueno:</strong> "Escribe un caption para BilliCactus (@billicactus). El post muestra un cojín personalizado con la ilustración de un golden retriever llamado Max. El cliente lo regaló para el cumpleaños de su esposa. Tono: cálido, emotivo, cercano. Incluye hook en la primera línea, CTA (pedir por WhatsApp) y 15 hashtags al final separados por puntos. Máximo 200 palabras."</p>
-
-              <h4>Prompts reutilizables por tipo</h4>
-              <p><strong>Ideas semanales:</strong> "Necesito ideas de contenido para [marca] para la próxima semana. [contexto: fecha especial, tema]. Dame un calendario con día, formato, pilar y descripción breve."</p>
-              <p><strong>Captions:</strong> "Escribe caption para [marca], producto [descripción], tono [emotivo/vibrante], incluye hook, CTA y 15-20 hashtags. Longitud 150-250 caracteres."</p>
-              <p><strong>Reels:</strong> "Dame 3 ideas de Reels para [marca] sobre [tema]. Incluye estructura segundo a segundo, texto en pantalla y tipo de audio."</p>
-              <p><strong>Métricas:</strong> Pega tus métricas y escribe: "Analiza estos resultados. ¿Qué funcionó mejor? ¿Patrones de horario o formato? 3 recomendaciones concretas para la próxima semana."</p>
-
-              <h4>Errores a evitar</h4>
-              <ul>
-                <li>Prompts vagos: "escribe algo", "dame ideas".</li>
-                <li>No especificar la marca (BilliCactus y Olumi tienen tonos distintos).</li>
-                <li>Publicar sin editar lo que genera la IA (siempre agrega tu toque).</li>
-                <li>Usar el mismo prompt para todo (ajusta según el tipo de contenido).</li>
-              </ul>
-
-              <h4>Tip: pide variaciones</h4>
-              <p>Si un caption no te convence: "Dame 3 variaciones: una más emotiva, una más directa, una más divertida." Así eliges la que mejor encaja.</p>
-            </div>
-          </details>
-          <details class="guide">
-            <summary>📈 Guía Métricas — Qué medir y cómo aprender</summary>
-            <div class="guide-content">
-              <h4>¿Por qué registrar métricas?</h4>
-              <p>Sin datos, publicas a ciegas. Registrar métricas cada semana te permite ver qué tipo de contenido conecta, qué horarios funcionan y qué experimentos valen la pena repetir. Así optimizas tu tiempo y esfuerzo.</p>
-
-              <h4>Qué registrar cada semana</h4>
-              <ul>
-                <li><strong>Alcance:</strong> Cuántas cuentas únicas vieron tu publicación.</li>
-                <li><strong>Guardados:</strong> Cuántos guardaron el post (muy valioso para el algoritmo).</li>
-                <li><strong>Compartidos:</strong> Cuántos lo compartieron (expande alcance).</li>
-                <li><strong>Comentarios:</strong> Cantidad y tipo.</li>
-                <li><strong>DMs:</strong> Consultas, pedidos, interés.</li>
-                <li><strong>Clics en link:</strong> Tráfico real hacia compra.</li>
-              </ul>
-
-              <h4>Métricas que importan (las que el algoritmo premia)</h4>
-              <table>
-                <tr><th>Métrica</th><th>Meta</th><th>Por qué</th></tr>
-                <tr><td>Guardados</td><td>&gt;3% del alcance</td><td>Indica contenido valioso</td></tr>
-                <tr><td>Compartidos</td><td>&gt;2% del alcance</td><td>Expande alcance orgánico</td></tr>
-                <tr><td>Comentarios</td><td>&gt;10/post</td><td>Engagement real</td></tr>
-                <tr><td>Clics en link</td><td>Seguir tendencia</td><td>Tráfico a compra</td></tr>
-                <tr><td>DMs</td><td>Tracking manual</td><td>Intención de compra</td></tr>
-              </table>
-
-              <h4>Métricas de vanidad (menos importantes)</h4>
-              <p><strong>Likes</strong> y <strong>seguidores totales</strong> son fáciles de obtener pero no indican intención real. Un post con muchos likes y pocos guardados/compartidos no le dice al algoritmo que tu contenido es valioso. Prioriza guardados y compartidos.</p>
-
-              <h4>Engagement rate: la fórmula</h4>
-              <p>(Likes + comentarios + guardados + compartidos) ÷ alcance × 100</p>
-              <ul>
-                <li>&lt;1%: problemático</li>
-                <li>1-3%: normal para cuentas grandes</li>
-                <li>3-5%: bueno</li>
-                <li>5-8%: excelente (Olumi, al ser cuenta pequeña, debe apuntar a &gt;5%)</li>
-              </ul>
-
-              <h4>Cómo registrar: tabla semanal</h4>
-              <p>Cada domingo, anota en una hoja o Sheet: Semana | Posts | Reels | Mejor publicación | Peor publicación | Guardados totales | DMs | Aprendizaje.</p>
-
-              <h4>Paso a paso: análisis con la Gema</h4>
-              <ol>
-                <li>Copia tus métricas de Instagram Insights (alcance, guardados, compartidos, comentarios por publicación).</li>
-                <li>Pega en la Gema con este prompt:</li>
-              </ol>
-              <pre>Estos son los resultados de mis últimas publicaciones: [pegar métricas].
+          <div data-guide-content="6">
+            <h3>Métricas — Qué medir y cómo aprender</h3>
+            <h4>¿Por qué registrar métricas?</h4>
+            <p>Sin datos, publicas a ciegas. Registrar métricas cada semana te permite ver qué tipo de contenido conecta, qué horarios funcionan y qué experimentos valen la pena repetir.</p>
+            <h4>Qué registrar cada semana</h4>
+            <ul>
+              <li><strong>Alcance:</strong> Cuántas cuentas únicas vieron tu publicación.</li>
+              <li><strong>Guardados:</strong> Cuántos guardaron el post (muy valioso).</li>
+              <li><strong>Compartidos:</strong> Cuántos lo compartieron (expande alcance).</li>
+              <li><strong>Comentarios:</strong> Cantidad y tipo.</li>
+              <li><strong>DMs:</strong> Consultas, pedidos, interés.</li>
+              <li><strong>Clics en link:</strong> Tráfico real hacia compra.</li>
+            </ul>
+            <h4>Métricas que importan</h4>
+            <table>
+              <tr><th>Métrica</th><th>Meta</th><th>Por qué</th></tr>
+              <tr><td>Guardados</td><td>&gt;3% del alcance</td><td>Indica contenido valioso</td></tr>
+              <tr><td>Compartidos</td><td>&gt;2% del alcance</td><td>Expande alcance orgánico</td></tr>
+              <tr><td>Comentarios</td><td>&gt;10/post</td><td>Engagement real</td></tr>
+              <tr><td>Clics en link</td><td>Seguir tendencia</td><td>Tráfico a compra</td></tr>
+              <tr><td>DMs</td><td>Tracking manual</td><td>Intención de compra</td></tr>
+            </table>
+            <h4>Engagement rate: la fórmula</h4>
+            <p>(Likes + comentarios + guardados + compartidos) / alcance x 100</p>
+            <ul>
+              <li>&lt;1%: problemático</li>
+              <li>1-3%: normal para cuentas grandes</li>
+              <li>3-5%: bueno</li>
+              <li>5-8%: excelente (Olumi debe apuntar a &gt;5%)</li>
+            </ul>
+            <h4>Cómo registrar</h4>
+            <p>Cada domingo: Semana | Posts | Reels | Mejor publicación | Peor publicación | Guardados totales | DMs | Aprendizaje.</p>
+            <h4>Prompt para análisis</h4>
+            <div class="prompt-card" data-copyable>Estos son los resultados de mis últimas publicaciones: [pegar métricas].
 Analiza:
 1. Qué tipo de contenido funcionó mejor y por qué
 2. Patrones de horario o formato
-3. 3 recomendaciones concretas para la próxima semana</pre>
-            </div>
-          </details>
+3. 3 recomendaciones concretas para la próxima semana</div>
+          </div>
+
+          <div data-guide-content="7">
+            <h3>Base de conocimiento Gema — Identidad de marca por marca</h3>
+            <p>La Gema de Gemini necesita un <strong>archivo de contexto</strong> (base de conocimiento) por cada marca. Ese archivo es la identidad de marca que la IA usará para generar calendarios, captions, ideas de Reels y respuestas coherentes. Sin él, la Gema responde de forma genérica; con él, responde como si conociera a BilliCactus y a Olumi.</p>
+            <p>Esta guía define un <strong>formato base</strong> que puedes completar para cada marca y luego subir a la Gema (o pegar en sus instrucciones). Cada sección está explicada para que sepas qué escribir y por qué.</p>
+
+            <h4>Formato base — Esquema del archivo</h4>
+            <ol class="format-index">
+              <li>Esencia de marca</li>
+              <li>Público objetivo</li>
+              <li>Voz y tono</li>
+              <li>Pilares de contenido</li>
+              <li>Productos / servicios y propuesta de valor</li>
+              <li>Mensajes clave y CTAs</li>
+              <li>Palabras clave y palabras a evitar</li>
+              <li>Reglas visuales (para descripciones y guiones)</li>
+              <li>Ejemplos de hooks y captions</li>
+              <li>Hashtags por grupo</li>
+              <li>Fechas clave y campañas</li>
+              <li>Flujo de compra y mensajes modelo (si aplica)</li>
+              <li>Checklist «¿Suena a [marca]?»</li>
+            </ol>
+
+            <h4>1. Esencia de marca</h4>
+            <p><strong>Qué es:</strong> La promesa en una frase y la sensación que debe transmitir la marca.</p>
+            <p><strong>Qué incluir:</strong> Tagline o propuesta de valor corta; 2–3 palabras que definan la sensación (ej. «calma + alegría vibrante»); el rol de la marca para el cliente (ej. «acompañarte en rituales diarios»).</p>
+            <p><strong>Por qué la Gema lo usa:</strong> Para no confundir una marca con otra y para que cada caption o idea transmita la emoción correcta.</p>
+
+            <h4>2. Público objetivo</h4>
+            <p><strong>Qué es:</strong> A quién le hablas (edad, intereses, qué buscan y por qué compran).</p>
+            <p><strong>Qué incluir:</strong> Perfil breve (ej. «mujeres 25–45, bienestar, yoga, naturaleza»); motivación de compra (emoción + utilidad); si es hipótesis, indícalo para ajustar con datos después.</p>
+            <p><strong>Por qué la Gema lo usa:</strong> Para elegir temas, ángulos y lenguaje que conecten con esa audiencia.</p>
+
+            <h4>3. Voz y tono</h4>
+            <p><strong>Qué es:</strong> Cómo suena la marca: adjetivos (cálido, emotivo, vibrante) y ritmo de frase (corto, respirable, etc.).</p>
+            <p><strong>Qué incluir:</strong> Tono base en 3–4 palabras; qué SÍ hace la marca (ej. «hablar de rituales», «conectar diseño con emoción»); qué NO hace (ej. «promesas médicas», «urgencia agresiva»).</p>
+            <p><strong>Por qué la Gema lo usa:</strong> Para que los captions y respuestas no suenen genéricos ni a otra marca.</p>
+
+            <h4>4. Pilares de contenido</h4>
+            <p><strong>Qué es:</strong> Los 4–6 temas recurrentes que estructuran el contenido (producto, proceso, educación, comunidad, etc.).</p>
+            <p><strong>Qué incluir:</strong> Nombre del pilar + breve descripción o ángulo (ej. «Naturaleza y diseño: patrones, paletas, inspiración»). Incluye % aproximado si quieres priorizar (ej. Producto 30%, Proceso 25%).</p>
+            <p><strong>Por qué la Gema lo usa:</strong> Para proponer calendarios equilibrados y no repetir siempre el mismo tipo de post.</p>
+
+            <h4>5. Productos / servicios y propuesta de valor</h4>
+            <p><strong>Qué es:</strong> Qué vendes y qué te diferencia en una frase.</p>
+            <p><strong>Qué incluir:</strong> Lista de productos o líneas (cuadros, cojines, toallas, panoletas…); propuesta de valor en una línea; link o canal de pedidos (WhatsApp, link en bio).</p>
+            <p><strong>Por qué la Gema lo usa:</strong> Para no inventar productos, para citar bien en captions y para sugerir CTAs correctos.</p>
+
+            <h4>6. Mensajes clave y CTAs</h4>
+            <p><strong>Qué es:</strong> Frases ancla que repetís («Magia en cada creación», «Transformamos tus recuerdos en arte») y llamadas a la acción que usás.</p>
+            <p><strong>Qué incluir:</strong> 3–5 mensajes clave; 4–6 CTAs en rotación (guardar, DM, comentar, compartir, pregunta suave).</p>
+            <p><strong>Por qué la Gema lo usa:</strong> Para cerrar captions y guiones con frases que ya son de la marca y para variar CTAs sin inventar.</p>
+
+            <h4>7. Palabras clave y palabras a evitar</h4>
+            <p><strong>Qué es:</strong> Vocabulario que refuerza la marca y vocabulario que no querés usar.</p>
+            <p><strong>Qué incluir:</strong> Lista de palabras clave (naturaleza, fluir, recuerdos, arte…); lista de evitar (urgente, última oportunidad, cura, etc.).</p>
+            <p><strong>Por qué la Gema lo usa:</strong> Para que el copy sea coherente y no caiga en lenguaje marketero o claims que la marca no hace.</p>
+
+            <h4>8. Reglas visuales</h4>
+            <p><strong>Qué es:</strong> Cómo se ven los posts (luz, fondos, texto en pantalla, paleta) para cuando la Gema describa guiones o ideas de Reels.</p>
+            <p><strong>Qué incluir:</strong> Estilo de foto (luz natural, fondos); cantidad de texto en piezas (ej. máx. 6–10 palabras por slide); paleta o colores ancla; tipo de portada de Reels.</p>
+            <p><strong>Por qué la Gema lo usa:</strong> Para sugerir «b-roll», textos en pantalla y descripciones de escena alineadas con tu estética.</p>
+
+            <h4>9. Ejemplos de hooks y captions</h4>
+            <p><strong>Qué es:</strong> 3–5 ejemplos reales de primeras líneas o captions que funcionaron o que representan bien la voz.</p>
+            <p><strong>Qué incluir:</strong> Hooks de posts; si tenés, un caption corto completo. Marca si es BilliCactus u Olumi.</p>
+            <p><strong>Por qué la Gema lo usa:</strong> Para imitar estilo y ritmo en lugar de inventar desde cero.</p>
+
+            <h4>10. Hashtags por grupo</h4>
+            <p><strong>Qué es:</strong> Conjuntos de hashtags (amplios, nicho, branded) listos para rotar.</p>
+            <p><strong>Qué incluir:</strong> 3–5 amplios; 5–8 de nicho; 2–3 branded. Podés tener varios «sets» (producto, estilo de vida, fechas).</p>
+            <p><strong>Por qué la Gema lo usa:</strong> Para añadir hashtags relevantes al final de cada caption sin repetir siempre los mismos.</p>
+
+            <h4>11. Fechas clave y campañas</h4>
+            <p><strong>Qué es:</strong> Calendario comercial: fechas especiales y cuándo arrancar cada campaña.</p>
+            <p><strong>Qué incluir:</strong> Fechas (San Valentín, Día de la Madre, Amor y Amistad, Navidad…) y, si aplica, cuántas semanas antes empezar (ej. BilliCactus: pedidos con tiempo por el proceso creativo).</p>
+            <p><strong>Por qué la Gema lo usa:</strong> Para proponer calendarios que anticipen fechas y no lleguen tarde.</p>
+
+            <h4>12. Flujo de compra y mensajes modelo (si aplica)</h4>
+            <p><strong>Qué es:</strong> Cómo va el cliente desde el primer contacto hasta la compra, y respuestas tipo para DMs.</p>
+            <p><strong>Qué incluir:</strong> Pasos del pipeline (entrada → datos → cotización → pago → producción → envío → postventa); 4–6 mensajes modelo (primer respuesta, pedido de foto, expectativas, cotización, postventa, indecisión). Usar placeholders como <code>{precio}</code>, <code>{tiempo}</code> si no querés que la IA invente números.</p>
+            <p><strong>Por qué la Gema lo usa:</strong> Para sugerir respuestas a clientes y recordar no inventar precios o plazos.</p>
+
+            <h4>13. Checklist «¿Suena a [marca]?»</h4>
+            <p><strong>Qué es:</strong> 3–5 preguntas que te permiten revisar si un texto o idea encaja con la marca.</p>
+            <p><strong>Qué incluir:</strong> Preguntas concretas (ej. «¿Hay emoción + uso real?», «¿CTA suave y humano?», «¿Nada inventado?»).</p>
+            <p><strong>Por qué la Gema lo usa:</strong> Como criterio interno para no salirse del tono ni inventar datos.</p>
+
+            <hr class="guide-divider">
+
+            <h4>Propuestas para revisar e incluir</h4>
+            <p>En la carpeta <code>plans</code> ya hay documentos que pueden servir como base o como contenido a copiar en tu archivo de identidad. Revisa y adapta lo que aplique.</p>
+
+            <ul class="proposal-list">
+              <li><strong>BilliCactus — Guía estratégica</strong> (<code>ia_marketing_contenido_redes/docs/guia-billicactus.md</code>): análisis de marca, pilares de contenido, frecuencia, horarios, estrategia por formato (posts, Reels, historias, carruseles), campañas del año, KPIs y plan de acción. Ideal para rellenar las secciones 1–5 y 11 del formato base.</li>
+              <li><strong>Olumi — Guía estratégica</strong> (<code>ia_marketing_contenido_redes/docs/guia-olumi.md</code>): análisis de marca, identidad visual, pilares, estrategia 0–1.000 seguidores, tipos de Reels, hashtags, campañas y KPIs. Úsala para secciones 1–5, 8, 10 y 11.</li>
+              <li><strong>Olumi — BrandOS</strong> (<code>plan_ia_redes_olumi_billi/docs/olumi-brand-os.md</code>): esencia, público, voz y tono, pilares, mensajes clave, CTAs, palabras clave/evitar, reglas visuales y checklist «¿Suena a Olumi?». Es una propuesta muy alineada con las secciones 1–3, 6, 7, 8 y 13 del formato.</li>
+              <li><strong>BilliCactus — Variante / operativo</strong> (<code>plan_ia_redes_olumi_billi/docs/billicactus-variant.md</code>): esencia, productos, tono, pilares, checklist de info por DM, flujo de compra y mensajes modelo (primer respuesta, solicitud de foto, expectativas, cotización, postventa, indecisión). Ideal para secciones 1–4, 12 y parte de 6.</li>
+              <li><strong>Prompt/instrucciones de la Gema</strong> (<code>ia_marketing_contenido_redes/docs/gema-gemini-prompt.md</code>): contiene ya un resumen de BilliCactus y Olumi dentro del prompt. Puedes extraer ese bloque y ampliarlo con el formato base; o mantener el prompt corto y subir el archivo de identidad como archivo adjunto en la Gema.</li>
+            </ul>
+
+            <p><strong>Cómo usarlo:</strong> Crea un archivo por marca (ej. <code>identidad-billicactus.md</code> y <code>identidad-olumi.md</code>), completa cada sección del formato base y, donde ya exista texto en los planes, cópialo y pégalo adaptando. Luego sube cada archivo a la Gema o pégalo en las instrucciones de la Gema para que tenga todo el contexto necesario.</p>
+          </div>
         </div>
       </section>
+
+      <!-- ========== TIPS IA (BENTO GRID) ========== -->
       <section class="panel" id="panel-tips-ia">
         <header class="panel-header">
-          <h2>🤖 Tips para usar la IA</h2>
+          <h2>Tips para usar la IA</h2>
           <p>Mejores prácticas para que la Gema de Gemini trabaje a tu favor sin perder tu voz.</p>
         </header>
-        <div class="tips-content">
-          <ul class="tips-list">
-            <li><strong>Estructura del prompt:</strong> Rol + Tarea + Contexto + Formato + Restricciones</li>
-            <li><strong>IA asiste, no reemplaza:</strong> Siempre revisar y agregar tu toque personal</li>
-            <li><strong>Regla 80/20:</strong> 80% asistido por IA, 20% humano (historias espontáneas, respuestas)</li>
-            <li><strong>Sé específica:</strong> "Caption para BilliCactus, cojín con golden retriever, emotivo" &gt; "Escribe un post"</li>
-            <li><strong>Pide variaciones:</strong> "Dame 3 versiones: emotiva, directa, divertida"</li>
-            <li><strong>Evita:</strong> Publicar sin editar, prompts vagos, ignorar voz de marca</li>
-            <li><strong>Métricas que importan:</strong> Guardados, compartidos, comentarios, clics, DMs (más que likes)</li>
-          </ul>
-          <h4>Prompts listos para copiar</h4>
-          <pre>Necesito ideas de contenido para [marca] para la próxima semana. [contexto: fecha especial/tema]</pre>
-          <pre>Escribe un caption para un post de [marca] mostrando [producto/escena]. Tono [emotivo/vibrante]. Incluye CTA y hashtags.</pre>
-          <pre>Dame 3 ideas de Reels para [marca] mostrando [tema]. Incluye estructura segundo a segundo.</pre>
+        <div class="bento-grid">
+          <div class="bento-item bento-item--wide bento-item--featured">
+            <span class="bento-icon">🧩</span>
+            <h3>Estructura del prompt</h3>
+            <p>Rol + Tarea + Contexto + Formato + Restricciones. Esta fórmula transforma resultados genéricos en contenido usable.</p>
+          </div>
+          <div class="bento-item">
+            <span class="bento-icon">🤝</span>
+            <h3>IA asiste, no reemplaza</h3>
+            <p>Siempre revisar y agregar tu toque personal. Tu voz es el diferencial.</p>
+          </div>
+          <div class="bento-item">
+            <span class="bento-icon">⚖️</span>
+            <h3>Regla 80/20</h3>
+            <p>80% asistido por IA, 20% humano (historias espontáneas, respuestas, anécdotas reales).</p>
+          </div>
+          <div class="bento-item bento-item--wide">
+            <span class="bento-icon">🎯</span>
+            <h3>Sé específica</h3>
+            <p>"Caption para BilliCactus, cojín con golden retriever, emotivo" es mucho mejor que "Escribe un post". El detalle marca la diferencia.</p>
+          </div>
+          <div class="bento-item">
+            <span class="bento-icon">🔄</span>
+            <h3>Pide variaciones</h3>
+            <p>"Dame 3 versiones: emotiva, directa, divertida". Así eliges la mejor.</p>
+          </div>
+          <div class="bento-item">
+            <span class="bento-icon">🚫</span>
+            <h3>Evita</h3>
+            <p>Publicar sin editar, prompts vagos, ignorar voz de marca, mismo tono para ambas marcas.</p>
+          </div>
+          <div class="bento-item">
+            <span class="bento-icon">📊</span>
+            <h3>Métricas que importan</h3>
+            <p>Guardados, compartidos, comentarios, clics, DMs (mucho más que likes).</p>
+          </div>
+          <div class="bento-item bento-item--prompt" data-copyable>
+            <span class="bento-prompt-label">Prompt copiable</span>
+            <p>Necesito ideas de contenido para [marca] para la próxima semana. [contexto: fecha especial/tema]</p>
+          </div>
+          <div class="bento-item bento-item--prompt" data-copyable>
+            <span class="bento-prompt-label">Prompt copiable</span>
+            <p>Escribe un caption para un post de [marca] mostrando [producto/escena]. Tono [emotivo/vibrante]. Incluye CTA y hashtags.</p>
+          </div>
+          <div class="bento-item bento-item--prompt" data-copyable>
+            <span class="bento-prompt-label">Prompt copiable</span>
+            <p>Dame 3 ideas de Reels para [marca] mostrando [tema]. Incluye estructura segundo a segundo.</p>
+          </div>
         </div>
       </section>
+
+      <!-- ========== RUTINA DIARIA ========== -->
       <section class="panel" id="panel-diarias">
         <header class="panel-header">
-          <h2>⏱️ Rutina diaria</h2>
+          <h2>Rutina diaria</h2>
           <p>Unos 15 minutos al día. Marca cada paso y mantén tu racha.</p>
         </header>
         <div class="daily-tasks">
           <article class="daily-block">
-            <h3>✅ Rutina diaria</h3>
+            <h3><span class="day-emoji">✅</span> Rutina diaria</h3>
             <ul class="task-list">
               <li><label><input type="checkbox" data-task="daily-1"> 10 min: Responder DMs y comentarios</label></li>
               <li><label><input type="checkbox" data-task="daily-2"> 5 min: Recolectar frases del público (para futuros hooks)</label></li>
             </ul>
           </article>
           <article class="daily-block">
-            <h3>🌿 Engagement orgánico (Olumi)</h3>
+            <h3><span class="day-emoji">🌿</span> Engagement orgánico (Olumi)</h3>
             <ul class="task-list">
               <li><label><input type="checkbox" data-task="eng-1"> Comentar en 15-20 posts de cuentas del nicho</label></li>
               <li><label><input type="checkbox" data-task="eng-2"> Seguir 20-30 cuentas relevantes</label></li>
@@ -534,24 +885,57 @@ Analiza:
           </div>
         </div>
       </section>
+
+      <!-- ========== MOTIVACIÓN (QUOTE CARDS) ========== -->
       <section class="panel" id="panel-motivacion">
         <header class="panel-header">
-          <h2>🌟 Para no rendirte</h2>
+          <h2>Para no rendirte</h2>
           <p>La constancia es lo que marca la diferencia. Estos recordatorios te ayudan a seguir.</p>
         </header>
-        <div class="motivacion-content">
-          <ul class="tips-list motivacion-list">
-            <li><strong>Consistencia &gt; perfección:</strong> Mejor 3 posts buenos que 7 mediocres. El algoritmo premia la regularidad.</li>
-            <li><strong>Bloquea tiempo:</strong> Reserva bloques fijos (ej. domingo 9:00 planificación, 15 min diarios engagement).</li>
-            <li><strong>Celebra pequeños logros:</strong> Cada post, caption, DM respondido cuenta.</li>
-            <li><strong>No te compares:</strong> Olumi está en etapa semilla; BilliCactus tiene base. Cada marca tiene su ritmo.</li>
-            <li><strong>Recuerda el "por qué":</strong> "Transformamos recuerdos en arte" / "Magia en cada creación".</li>
-            <li><strong>Si te saltas un día:</strong> No pasa nada. Retoma al día siguiente sin culpa.</li>
-            <li><strong>Pregunta a la Gema:</strong> "Estoy agotada esta semana. Dame un plan mínimo de 3 publicaciones."</li>
-            <li><strong>Contenido en lote:</strong> Planifica domingo, crea miércoles, programa viernes. Menos decisión diaria.</li>
-          </ul>
+        <div class="quotes-grid">
+          <blockquote class="quote-card" style="--q-accent: #c4654a;">
+            <div class="quote-card__mark">"</div>
+            <h3 class="quote-card__title">Consistencia > perfección</h3>
+            <p class="quote-card__body">Mejor 3 posts buenos que 7 mediocres. El algoritmo premia la regularidad, no la perfección.</p>
+          </blockquote>
+          <blockquote class="quote-card" style="--q-accent: #6b8f68;">
+            <div class="quote-card__mark">"</div>
+            <h3 class="quote-card__title">Bloquea tiempo</h3>
+            <p class="quote-card__body">Reserva bloques fijos: domingo 9:00 planificación, 15 min diarios engagement. Lo que se agenda, se hace.</p>
+          </blockquote>
+          <blockquote class="quote-card" style="--q-accent: #d4a24e;">
+            <div class="quote-card__mark">"</div>
+            <h3 class="quote-card__title">Celebra pequeños logros</h3>
+            <p class="quote-card__body">Cada post, caption, DM respondido cuenta. El progreso se construye un paso a la vez.</p>
+          </blockquote>
+          <blockquote class="quote-card" style="--q-accent: #8b5cf6;">
+            <div class="quote-card__mark">"</div>
+            <h3 class="quote-card__title">No te compares</h3>
+            <p class="quote-card__body">Olumi está en etapa semilla; BilliCactus tiene base. Cada marca tiene su ritmo y su momento.</p>
+          </blockquote>
+          <blockquote class="quote-card" style="--q-accent: #e07b6a;">
+            <div class="quote-card__mark">"</div>
+            <h3 class="quote-card__title">Recuerda el "por qué"</h3>
+            <p class="quote-card__body">"Transformamos recuerdos en arte" / "Magia en cada creación". Esa es tu brújula.</p>
+          </blockquote>
+          <blockquote class="quote-card" style="--q-accent: #4a90a4;">
+            <div class="quote-card__mark">"</div>
+            <h3 class="quote-card__title">Si te saltas un día</h3>
+            <p class="quote-card__body">No pasa nada. Retoma al día siguiente sin culpa. Una pausa no es un fracaso.</p>
+          </blockquote>
+          <blockquote class="quote-card" style="--q-accent: #6b8f68;">
+            <div class="quote-card__mark">"</div>
+            <h3 class="quote-card__title">Pregunta a la Gema</h3>
+            <p class="quote-card__body">"Estoy agotada esta semana. Dame un plan mínimo de 3 publicaciones." La IA está para simplificarte la vida.</p>
+          </blockquote>
+          <blockquote class="quote-card" style="--q-accent: #d4a24e;">
+            <div class="quote-card__mark">"</div>
+            <h3 class="quote-card__title">Contenido en lote</h3>
+            <p class="quote-card__body">Planifica domingo, crea miércoles, programa viernes. Menos decisión diaria, más energía creativa.</p>
+          </blockquote>
         </div>
       </section>
+
     </main>
   </div>
   <script src="app.js"></script>
