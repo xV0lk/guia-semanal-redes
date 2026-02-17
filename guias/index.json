@@ -1,4 +1,21 @@
 {
-  "version": 1,
-  "guides": []
+  "version": 2,
+  "docs": [
+    { "id": "estrategia-billicactus", "title": "Estrategia BilliCactus", "type": "estrategia", "file": "docs/estrategia-billicactus.md" },
+    { "id": "estrategia-olumi", "title": "Estrategia Olumi", "type": "estrategia", "file": "docs/estrategia-olumi.md" },
+    { "id": "gema-gemini", "title": "Gema de Gemini", "type": "ia", "file": "docs/gema-gemini.md" },
+    { "id": "herramientas-y-automatizacion", "title": "Herramientas y automatización", "type": "herramientas", "file": "docs/herramientas-y-automatizacion.md" },
+    { "id": "workflow-semanal", "title": "Workflow semanal", "type": "workflow", "file": "docs/workflow-semanal.md" },
+    { "id": "mejores-practicas-ia", "title": "Mejores prácticas IA", "type": "practicas", "file": "docs/mejores-practicas-ia.md" },
+    { "id": "recursos-y-referencias", "title": "Recursos y referencias", "type": "recursos", "file": "docs/recursos-y-referencias.md" },
+    { "id": "metricas-y-sheets", "title": "Métricas y Sheets", "type": "metricas", "file": "docs/metricas-y-sheets.md" }
+  ],
+  "ejemplos": [
+    { "id": "calendario-billicactus-mes1", "title": "Calendario BilliCactus mes 1", "file": "ejemplos/calendario-billicactus-mes1.md" },
+    { "id": "calendario-olumi-mes1", "title": "Calendario Olumi mes 1", "file": "ejemplos/calendario-olumi-mes1.md" },
+    { "id": "captions-billicactus", "title": "Captions BilliCactus", "file": "ejemplos/captions-billicactus.md" },
+    { "id": "captions-olumi", "title": "Captions Olumi", "file": "ejemplos/captions-olumi.md" },
+    { "id": "flujo-lifestyle", "title": "Flujo contenido lifestyle", "file": "ejemplos/flujo-lifestyle.md" },
+    { "id": "flujo-personalizado", "title": "Flujo contenido personalizado", "file": "ejemplos/flujo-personalizado.md" }
+  ]
 }

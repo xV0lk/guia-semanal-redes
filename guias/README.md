@@ -1,35 +1,29 @@
-# Guías generadas por IA
+# Guías y documentos de referencia
 
-Esta carpeta almacena guías de contenido generadas con la Gema de Gemini u otras herramientas de IA.
+Esta carpeta contiene la documentación unificada de estrategia, IA, herramientas y ejemplos para la gestión de redes de BilliCactus y Olumi. La app los expone en la sección **Guías** bajo "Documentos de referencia".
 
 ## Estructura
 
-- `index.json` — Índice de guías disponibles. La app lo consulta para listar las guías.
-- `generadas/` — Archivos individuales de cada guía (`.md` o `.html`).
+- **`index.json`** — Índice para la UI. Define los documentos (`docs`) y ejemplos (`ejemplos`) que se listan en la página. No editar a mano sin actualizar la app si cambias el formato.
+- **`docs/`** — Documentos unificados por tema:
+  - `estrategia-billicactus.md`, `estrategia-olumi.md`
+  - `gema-gemini.md`, `herramientas-y-automatizacion.md`, `workflow-semanal.md`
+  - `mejores-practicas-ia.md`, `recursos-y-referencias.md`, `metricas-y-sheets.md`
+- **`ejemplos/`** — Ejemplos listos para usar:
+  - Calendarios: `calendario-billicactus-mes1.md`, `calendario-olumi-mes1.md`
+  - Captions: `captions-billicactus.md`, `captions-olumi.md`
+  - Flujos: `flujo-lifestyle.md`, `flujo-personalizado.md`
 
-## Convención de nombres
+## Cómo se usa el índice
 
-```
-[tipo]-[marca]-[YYYYMM].[ext]
-```
+La app hace `fetch('guias/index.json')` y genera tarjetas por cada ítem en `docs` y `ejemplos`. Cada ítem debe tener:
 
-Ejemplos:
-- `caption-olumi-202602.md`
-- `calendario-billicactus-202603.md`
-- `reel-olumi-202602.md`
+- **docs:** `id`, `title`, `type` (estrategia, ia, herramientas, workflow, practicas, recursos, metricas), `file` (ruta relativa a `guias/`).
+- **ejemplos:** `id`, `title`, `file`.
 
-## Tipos de guía
+Al hacer clic en una tarjeta, se carga el `.md` indicado en `file`, se convierte a HTML con [marked](https://marked.js.org/) y se muestra en el mismo visor de detalle que las guías inline.
 
-- `caption` — Captions generados para posts
-- `calendario` — Calendario de contenido semanal o mensual
-- `reel` — Guiones de Reels
-- `historias` — Secuencias de Stories
-- `ideas` — Ideas de contenido
-- `metricas` — Análisis de métricas
+## Convenciones
 
-## Cómo agregar una guía
-
-1. Genera el contenido con la Gema de Gemini.
-2. Guarda el resultado en `generadas/` con el nombre según la convención.
-3. Agrega la entrada en `index.json`.
-4. Haz commit y push para que esté disponible en la app.
+- Los archivos son Markdown (`.md`). Se muestran con estilos de `.guide-content` en la app.
+- Para añadir un documento nuevo: crear el `.md` en `docs/` o `ejemplos/` y añadir la entrada correspondiente en `index.json` (array `docs` o `ejemplos`).

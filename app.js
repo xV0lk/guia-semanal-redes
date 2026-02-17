@@ -91,6 +91,8 @@
   const guideBack = document.getElementById('guideBack');
   const guideDetailContent = document.getElementById('guideDetailContent');
   const guideContents = document.getElementById('guideContents');
+  const docsRefGrid = document.getElementById('docsRefGrid');
+  const docsRefError = document.getElementById('docsRefError');
 
   // === Sidebar toggle (mobile) ===
   function openSidebar() {
@@ -130,9 +132,10 @@
       document.getElementById('panel-' + section)?.classList.add('active');
       if (window.innerWidth <= 768) closeSidebar();
 
-      // Reset guide detail when navigating to guides
+      // Reset guide detail and load docs index when navigating to guides
       if (section === 'guias') {
         showGuidesGrid();
+        loadDocsIndex();
       }
     });
   });
@@ -274,6 +277,7 @@
 
   function showGuidesGrid() {
     if (guidesGrid) guidesGrid.hidden = false;
+    if (docsRefGrid) docsRefGrid.hidden = false;
     if (guideDetail) guideDetail.hidden = true;
   }
 
@@ -298,24 +302,102 @@
     guideDetailContent.appendChild(wrapper);
 
     if (guidesGrid) guidesGrid.hidden = true;
+    if (docsRefGrid) docsRefGrid.hidden = true;
     if (guideDetail) guideDetail.hidden = false;
 
     // Re-bind copy buttons in the detail view
     bindCopyButtons(guideDetailContent);
   }
 
-  // Card click
+  // Card click (inline guides 0-6)
   if (guidesGrid) {
     guidesGrid.addEventListener('click', (e) => {
       const card = e.target.closest('.guide-card');
-      if (!card) return;
+      if (!card || card.hasAttribute('data-doc-file')) return;
       const idx = parseInt(card.dataset.guideIdx, 10);
+      if (Number.isNaN(idx)) return;
       showGuideDetail(idx);
     });
   }
 
   // Back button
   guideBack?.addEventListener('click', showGuidesGrid);
+
+  // === Documentos de referencia (guias/index.json + .md) ===
+  const TYPE_ICONS = { estrategia: '📋', ia: '🤖', herramientas: '🔧', workflow: '📅', practicas: '✨', recursos: '📚', metricas: '📈', ejemplo: '📄' };
+  let docsIndexLoaded = false;
+
+  function escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  function loadDocsIndex() {
+    if (docsIndexLoaded || !docsRefGrid) return;
+    fetch('guias/index.json')
+      .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then((data) => {
+        docsIndexLoaded = true;
+        if (docsRefError) docsRefError.hidden = true;
+        const fragment = document.createDocumentFragment();
+        (data.docs || []).forEach((doc) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'guide-card doc-ref-card';
+          btn.dataset.docFile = doc.file;
+          btn.dataset.docTitle = doc.title;
+          btn.setAttribute('role', 'listitem');
+          const icon = TYPE_ICONS[doc.type] || '📄';
+          btn.innerHTML = '<span class="guide-card__icon">' + icon + '</span><h3 class="guide-card__title">' + escapeHtml(doc.title) + '</h3><p class="guide-card__desc">' + escapeHtml(doc.type || '') + '</p>';
+          fragment.appendChild(btn);
+        });
+        (data.ejemplos || []).forEach((ej) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'guide-card doc-ref-card';
+          btn.dataset.docFile = ej.file;
+          btn.dataset.docTitle = ej.title;
+          btn.setAttribute('role', 'listitem');
+          btn.innerHTML = '<span class="guide-card__icon">📄</span><h3 class="guide-card__title">' + escapeHtml(ej.title) + '</h3><p class="guide-card__desc">Ejemplo</p>';
+          fragment.appendChild(btn);
+        });
+        docsRefGrid.appendChild(fragment);
+      })
+      .catch(() => {
+        if (docsRefError) docsRefError.hidden = false;
+      });
+  }
+
+  function showDocViewer(file, title) {
+    if (!guideDetailContent || !guideDetail) return;
+    guideDetailContent.innerHTML = '<p class="guide-content">Cargando…</p>';
+    if (guidesGrid) guidesGrid.hidden = true;
+    if (docsRefGrid) docsRefGrid.hidden = true;
+    guideDetail.hidden = false;
+
+    fetch('guias/' + file)
+      .then((r) => { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then((md) => {
+        const html = typeof marked !== 'undefined' && marked.parse ? marked.parse(md) : md.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        guideDetailContent.innerHTML = '<h3>' + escapeHtml(title) + '</h3><div class="guide-content markdown-body">' + html + '</div>';
+        bindCopyButtons(guideDetailContent);
+      })
+      .catch(() => {
+        guideDetailContent.innerHTML = '<h3>' + escapeHtml(title) + '</h3><div class="guide-content"><p class="docs-ref-error">No se pudo cargar el documento.</p><button type="button" class="guide-detail__back" id="docBackBtn">Volver a guías</button></div>';
+        document.getElementById('docBackBtn')?.addEventListener('click', showGuidesGrid);
+      });
+  }
+
+  if (docsRefGrid) {
+    docsRefGrid.addEventListener('click', (e) => {
+      const card = e.target.closest('[data-doc-file]');
+      if (!card) return;
+      showDocViewer(card.dataset.docFile, card.dataset.docTitle || 'Documento');
+    });
+  }
+
+  if (document.getElementById('panel-guias')?.classList.contains('active')) loadDocsIndex();
 
   // === Link to guides (from tasks) ===
   document.querySelectorAll('.link-guide').forEach((a) => {
